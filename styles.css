@@ -1,0 +1,292 @@
+* {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 50px;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+  }
+  
+  body {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f4f4f4;
+  }
+  
+  header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin: 1px;
+  }
+  .carousel {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin; /* thin scrollbar */
+    scrollbar-color: #aaa #f4f4f4; /* scrollbar track color and thumb color */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+}
+
+.carousel::-webkit-scrollbar {
+    width: 8px; /* width of the scrollbar */
+    height: 8px; /* height of the scrollbar */
+}
+
+.carousel::-webkit-scrollbar-track {
+    background: #f4f4f4; /* scrollbar track color */
+    border-radius: 10px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background-color: #aaa; /* scrollbar thumb color */
+    border-radius: 10px;
+}
+
+.carousel-inner {
+    display: flex;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+  
+  .menu-icon, .user-icon {
+      font-size: 24px;
+      margin: 20px;
+      cursor: pointer;
+      overflow: hidden;
+  }
+  
+  .logo {
+      font-size: 24px;
+      font-weight: bold;
+  }
+  
+  .button-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 60px; /* Space for fixed header */
+  }
+  
+  .action-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px; /* Round button */
+      background-color: #ffffff;
+      color: #007BFF; /* Default color for text */
+      cursor: pointer;
+      transition: all 0.3s ease; /* Smooth transition */
+  }
+  
+  .action-button:hover {
+      background-color: #007BFF;
+      color: white;
+  }
+  
+  .action-button.active {
+      background-color: #007BFF;
+      color: white;
+  }
+  
+  .search-icon {
+      font-size: 24px;
+      cursor: pointer;
+  }
+  
+  main {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 80px 20px 20px; 
+      width: 100%;
+      max-width: 600px;
+      box-sizing: border-box;
+  }
+  
+  .card {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+  }
+  
+  .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+  }
+  
+  .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+  
+  .empty-user-icon {
+      font-size: 40px;
+  }
+  
+  .user-details {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .user-name {
+      font-size: 16px;
+      font-weight: bold;
+  }
+  
+  .user-email {
+      font-size: 14px;
+  }
+  
+  .head {
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+  
+  .head p {
+      margin: 0;
+      font-size: 18px;
+      text-align: center;
+  }
+  
+  .img {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .img img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+  }
+  
+  @media (max-width: 600px) {
+      .menu-icon, .user-icon {
+          font-size: 20px;
+      }
+  
+      .logo {
+          font-size: 20px;
+      }
+  
+      .button-container {
+          flex-direction: row; /* Ensure buttons stay in a row */
+          justify-content: space-around; /* Center buttons horizontally */
+          padding: 10px 20px 10px; /* Adjust padding for smaller screens */
+      }
+  
+      .action-button {
+          width: 120px; /* Set a fixed width for buttons */
+          margin: 5px; /* Add margin between buttons */
+      }
+  
+      .action-button.active {
+          background-color: #007BFF;
+          color: white;
+      }
+  
+      main {
+          padding: 70px 10px 10px; /* Adjusted padding for smaller screens */
+      }
+  
+      .card {
+          padding: 15px;
+      }
+  
+      .card h2 {
+          font-size: 18px;
+      }
+  
+      .empty-user-icon {
+          font-size: 35px;
+      }
+  
+      .user-name {
+          font-size: 14px;
+      }
+  
+      .user-email {
+          font-size: 12px;
+      }
+  
+      .head p {
+          font-size: 16px;
+      }
+  
+      .img img {
+          border-radius: 8px;
+      }
+  }
+  
+  @media (max-width: 400px) {
+      .menu-icon, .user-icon {
+          font-size: 18px;
+      }
+  
+      .logo {
+          font-size: 18px;
+      }
+  
+      main {
+          padding: 60px 5px 5px; /* Adjusted padding for very small screens */
+      }
+  
+      .card {
+          padding: 10px;
+      }
+  
+      .card h2 {
+          font-size: 16px;
+      }
+  
+      .empty-user-icon {
+          font-size: 30px;
+      }
+  
+      .user-name {
+          font-size: 12px;
+      }
+  
+      .user-email {
+          font-size: 10px;
+      }
+  
+      .head p {
+          font-size: 14px;
+      }
+  
+      .img img {
+          border-radius: 8px;
+      }
+  }
+  
