@@ -1,0 +1,238 @@
+
+  
+  header {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #07285a;
+    font-weight: 500;
+  }
+  
+  .btn-registrarse {
+    background-color: #1e8efb;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+  }
+  
+  .perfil-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 4rem 2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  
+  .perfil-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+  }
+  
+  .perfil-form h2 {
+    margin-bottom: 1rem;
+    color: white;
+  }
+  
+  .perfil-icono {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    background-color: #0e3979;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .perfil-form label {
+    font-weight: 600;
+  }
+  
+  .perfil-form input {
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #1c2c5a;
+    color: white;
+  }
+  
+  .perfil-ilustracion img {
+    width: 400px;
+    max-width: 100%;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to right, #f6f8fc 40%, #ffffff 60%);
+    color: #07285a;
+  }
+  
+  header {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #07285a;
+    font-weight: 500;
+  }
+  
+  .btn-registrarse {
+    background-color: #1e8efb;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+  }
+  
+  .perfil-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .perfil-card {
+    background-color: #fefefe;
+    border-radius: 16px;
+    padding: 2rem 2rem 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 280px;
+  }
+  
+  .perfil-avatar img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .perfil-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  
+  .perfil-rol {
+    color: #999;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+  
+  .perfil-redes a {
+    margin: 0 6px;
+    color: #333;
+    font-size: 1.1rem;
+    text-decoration: none;
+  }
+  
+  .perfil-bio {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .perfil-bio h2 {
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .perfil-bio p {
+    margin-bottom: 2rem;
+    color: #445;
+  }
+  
+  .perfil-datos label {
+    display: block;
+    font-weight: 600;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .perfil-datos input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid #dce3ee;
+    background: #f4f7fc;
+    border-radius: 8px;
+    margin-top: 0.3rem;
+    font-size: 0.95rem;
+    color: #07285a;
+  }
+  
+  .perfil-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn-perfil {
+    padding: 0.8rem 2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  
+  .btn-perfil.azul {
+    background-color: #1e8efb;
+    color: white;
+  }
+  
+  .btn-perfil.blanco {
+    background-color: transparent;
+    border: 2px solid #1e8efb;
+    color: #1e8efb;
+  }
+  
+  .btn-perfil.blanco:hover {
+    background-color: #1e8efb;
+    color: white;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    height: 60px;         /* Ajusta este valor hasta que estés feliz */
+    width: auto;
+    display: block;
+  }

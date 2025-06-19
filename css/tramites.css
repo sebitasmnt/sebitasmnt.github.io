@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #071f4f;
+  }
+  
+  header {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #07285a;
+    font-weight: 500;
+  }
+  
+  .btn-registrarse {
+    background-color: #071f4f;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+  }
+  
+  .tramites-container {
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  
+  .contenido {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  
+  .lista-tramites {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .item {
+    background-color: #e0e0e0;
+    padding: 0.8rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    width: 150px;
+  }
+  
+  .estados {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .btn {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 160px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .aprobado {
+    background-color: #0e0e6f;
+  }
+  
+  .rechazado {
+    background-color: #e53935;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  
+  .ilustracion img {
+    width: 300px;
+    max-width: 100%;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    height: 60px;         /* Ajusta este valor hasta que estés feliz */
+    width: auto;
+    display: block;
+  }

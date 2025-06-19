@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Registro</title>
+  <link href="css/registro.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="home.html">
+          <img src="assets/logo.svg" alt="Logo Frontera Inteligente" class="logo-img" />
+        </a>
+      </div>
+      <nav>
+        <a class="btn-registrarse" href="index.html">Iniciar sesión →</a>
+      </nav>
+    </div>
+  </header>
+  <!-- FORMULARIO DE REGISTRO -->
+  <section class="registro-wrapper">
+    <h2>Registro</h2>
+    <p>Regístrese para mejorar su sistema de aduana</p>
+  
+    <form class="registro-grid">
+      <input type="text" placeholder="Nombre(s)" required>
+      <input type="text" placeholder="Apellido paterno" required>
+      <input type="text" placeholder="Apellido materno" required>
+      <input type="text" placeholder="Nacionalidad" required>
+      <input type="text" placeholder="Género" required>
+      <input type="text" placeholder="RUT (sin dígito verificador)" required>
+      <input type="text" placeholder="Dígito verificador" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Contraseña" required>
+  
+      <!-- 🔥 Mover el botón AQUÍ dentro -->
+      <div class="registro-submit">
+        <button type="submit">Registrarse</button>
+      </div>
+    </form>
+  </section>
+  </section>
+  <footer class="gov-footer">
+    <div class="footer-content">
+      <div class="footer-col logo-col">
+        <img src="assets/logo.svg" alt="Frontera Inteligente" class="logo-footer" />
+      </div>
+
+      <div class="footer-col links-col">
+        <p><strong>Red de servicios</strong></p>
+        <a href="#">Trámites disponibles</a>
+        <a href="#">Puntos de control</a>
+      </div>
+
+      <div class="footer-col call-col">
+        <p><strong><i class="fas fa-phone-alt"></i> Ayuda Telefónica</strong><br />600 123 4567</p>
+      </div>
+
+      <div class="footer-col contact-col">
+        <p><strong><i class="fas fa-question-circle"></i> Consultas</strong><br /><a href="#">¡Contáctanos!</a></p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col gov-col">
+        <img src="assets/logo-ministerio.png" alt="Ministerio" class="logo-gobierno" />
+      </div>
+    </div>
+  </footer>
+
+</body>
+<script src="js/main.js"></script>
+<script src="js/script.js"></script>
+
+</html>

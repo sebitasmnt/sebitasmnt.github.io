@@ -1,0 +1,285 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #071f4f;
+  color: white;
+}
+
+header {
+  background-color: #ffffff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: #07285a;
+  font-weight: 500;
+}
+
+.btn-registrarse {
+  background-color: #ff3c3c;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 300px;
+}
+
+.form-column h3 {
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.form-column p {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin: 0 0 1rem;
+}
+
+.form-column label {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group i {
+  position: absolute;
+  top: 60%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+input[type="text"],
+input[type="file"],
+input[type="number"] {
+  width: 100%;
+  padding: 0.6rem 0.6rem 0.6rem 2.2rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #1c2c5a;
+  color: white;
+}
+
+input::placeholder {
+  color: #bbb;
+}
+
+.submit-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.submit-btn {
+  background-color: #1e8efb;
+  color: white;
+  padding: 0.7rem 2rem;
+  margin:10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0f75d3;
+}
+
+/* Animación de aparición */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gov-footer {
+  background-color: #c4c4c4;
+  color: #333;
+  font-family: 'Inter', sans-serif;
+  padding: 2rem 1rem;
+}
+
+.footer-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 150px;
+  margin: 1rem;
+}
+
+.logo-footer, .logo-gobierno {
+  height: 60px;
+  margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+  display: block;
+  margin-top: 0.5rem;
+  color: #07285a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+.social-icons a {
+  margin: 0 5px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+
+.tramite-wrapper {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  max-width: 960px;
+  width: 90%;
+  margin: 4rem auto;
+}
+
+.tramite-wrapper h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #07285a;
+}
+
+.tramite-wrapper p {
+  text-align: center;
+  color: #5a6b87;
+  margin-bottom: 2rem;
+}
+
+.tramite-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 50px;
+}
+
+.tramite-grid input[type="text"],
+.tramite-grid input[type="file"] {
+  padding: 0.9rem 1rem;
+  margin: 1;
+  border: 1px solid #c6d6ea;
+  border-radius: 10px;
+  background-color: #f5faff;
+  font-size: 0.95rem;
+  color: #07285a;
+  transition: 0.3s ease;
+}
+
+
+.tramite-grid input::placeholder {
+  color: #a0b4cc;
+}
+
+.tramite-grid input:focus {
+  outline: none;
+  border-color: #1e8efb;
+  background-color: #ffffff;
+}
+
+.tramite-submit {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.tramite-submit button {
+  background-color: #1e8efb;
+  color: white;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.tramite-submit button:hover {
+  background-color: #0f75d3;
+}
+
+.tramite-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.tramite-submit {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.tramite-submit button {
+  background-color: #1e8efb;
+  color: white;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.tramite-submit button:hover {
+  background-color: #0f75d3;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 60px;         /* Ajusta este valor hasta que estés feliz */
+  width: auto;
+  display: block;
+}

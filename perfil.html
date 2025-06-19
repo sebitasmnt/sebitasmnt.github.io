@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Perfil</title>
+  <link rel="stylesheet" href="css/perfil.css"/>
+  <link href="css/login.css.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="home.html">
+          <img src="assets/logo.svg" alt="Logo Frontera Inteligente" class="logo-img" />
+        </a>
+      </div>
+      <nav>
+        <a href="tramite.html">Trámite Fácil</a>
+        <a href="index.html" class="btn-registrarse">Cerrar Sesion</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PERFIL -->
+  <section class="perfil-wrapper">
+    <div class="perfil-card">
+      <div class="perfil-avatar">
+        <img src="assets/Berny.jpeg" alt="Foto de perfil">
+      </div>
+      <h3>Bernardo Flores</h3>
+      <p class="perfil-rol">Ciudadano Registrado</p>
+      <div class="perfil-redes">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  
+    <div class="perfil-bio">
+      <h2>Hola 👋</h2>
+      <p>Bienvenido a tu panel personal. Aquí puedes revisar tus datos, editarlos o iniciar trámites.</p>
+  
+      <div class="perfil-datos">
+        <label>Nombre(s)</label>
+        <input type="text" value="Bernardo">
+        <label>Apellidos</label>
+        <input type="text" value="Flores">
+        <label>Email</label>
+        <input type="email" value="BernyCuentaHacker@hotmail.com">
+        <label>Nacionalidad</label>
+        <input type="text" value="Chile">
+      </div>
+  
+      <div class="perfil-actions">
+        <button class="btn-perfil azul">Editar Perfil</button>
+        <a href="tramites.html"><button class="btn-perfil blanco">Mis Trámites</button></a>
+      </div>
+    </div>
+  </section>
+  <footer class="gov-footer">
+    <div class="footer-content">
+      <div class="footer-col logo-col">
+        <img src="assets/logo.svg" alt="Frontera Inteligente" class="logo-footer" />
+      </div>
+
+      <div class="footer-col links-col">
+        <p><strong>Red de servicios</strong></p>
+        <a href="#">Trámites disponibles</a>
+        <a href="#">Puntos de control</a>
+      </div>
+
+      <div class="footer-col call-col">
+        <p><strong><i class="fas fa-phone-alt"></i> Ayuda Telefónica</strong><br />600 123 4567</p>
+      </div>
+
+      <div class="footer-col contact-col">
+        <p><strong><i class="fas fa-question-circle"></i> Consultas</strong><br /><a href="#">¡Contáctanos!</a></p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col gov-col">
+        <img src="assets/logo-ministerio.png" alt="Ministerio" class="logo-gobierno" />
+      </div>
+    </div>
+  </footer>
+
+</body>
+<script src="js/main.js"></script>
+<script src="js/script.js"></script>
+</html>

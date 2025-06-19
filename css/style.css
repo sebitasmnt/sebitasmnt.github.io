@@ -1,0 +1,208 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #1d1d1f;
+    background-color: #f9f9fb;
+  }
+  
+  header {
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    padding: 1rem 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hero-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: #1e8efb;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+  
+  .hero-btn:hover {
+    background-color: #0f75d3;
+  }
+
+  /* Animación al aparecer scroll */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Botón scroll top */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1e8efb;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: none;
+  z-index: 999;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+  
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .btn-registrarse {
+    background-color: #ff3c3c;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+  }
+  
+  .hero {
+    background-color: #f0f4fa;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .hero .text h1 {
+    font-size: 2.8rem;
+    color: #07285a;
+  }
+  
+  .hero .text p {
+    margin-top: 0.5rem;
+    color: #555;
+  }
+  
+  .hero .text button {
+    margin-top: 1rem;
+    background-color: #1e8efb;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .hero img {
+    width: 400px;
+    max-width: 100%;
+  }
+  
+  .alianzas {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  
+  .alianzas h2 {
+    font-size: 1.8rem;
+  }
+  
+  .alianzas p {
+    color: #666;
+  }
+  
+  .alianzas .logos img {
+    margin: 1rem;
+    height: 60px;
+  }
+  
+  .info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 1rem;
+    background-color: #ffffff;
+  }
+  
+  .card {
+    background-color: #f4f7fc;
+    border-radius: 10px;
+    padding: 2rem;
+    max-width: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  
+  .card h3 {
+    color: #07285a;
+    margin-bottom: 1rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    height: 60px;         /* Ajusta este valor hasta que estés feliz */
+    width: auto;
+    display: block;
+  }
+
+@media (max-width: 768px) {
+  .container, .perfil-container, .perfil-wrapper, .tramite-wrapper, .registro-wrapper {
+    flex-direction: column !important;
+    padding: 1rem !important;
+  }
+
+  nav a, .btn-registrarse {
+    display: block;
+    margin: 0.5rem 0 !important;
+    text-align: center;
+  }
+
+  .form-box, .perfil-form, .tramite-grid, .registro-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .perfil-ilustracion img, .form-box img {
+    width: 100% !important;
+    height: auto;
+  }
+
+  input, button, .submit-btn, .btn-perfil {
+    width: 100% !important;
+  }
+
+  .logo-img {
+    height: 40px !important;
+  }
+}
