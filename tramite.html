@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Trámite Fácil</title>
   <link href="css/tramite.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
-
 <body>
   <!-- NAVBAR -->
   <header>
@@ -21,7 +19,7 @@
       </div>
       <nav>
         <a href="perfil.html">Mi perfil</a>
-        <a href="index.html" class="btn-registrarse">Cerrar Sesion</a>
+        <a href="index.html" class="btn-registrarse">Cerrar Sesión</a>
       </nav>
     </div>
   </header>
@@ -30,16 +28,16 @@
   <section class="tramite-wrapper">
     <h2>Formulario de Trámite</h2>
     <p>Complete los datos requeridos para ingresar al sistema aduanero</p>
-
+    
     <form class="tramite-grid" id="tramiteForm">
-      <input type="text" placeholder="Nombre de la persona" required>
-      <input type="text" placeholder="Tipo de vehículo" required>
-      <input type="text" placeholder="¿Menor de edad?" required>
-      <input type="text" placeholder="Producto a declarar" required>
-      <input type="text" placeholder="¿Ingresará una mascota?" required>
-      <input type="file" required>
-      <input type="text" placeholder="Declaración SAG" required>
-      <input type="text" placeholder="Pasaporte vigente" required>
+      <input type="text" name="nombre" placeholder="Nombre de la persona" required>
+      <input type="text" name="vehiculo" placeholder="Tipo de vehículo" required>
+      <input type="text" name="menorEdad" placeholder="¿Menor de edad?" required>
+      <input type="text" name="producto" placeholder="Producto a declarar" required>
+      <input type="text" name="mascota" placeholder="¿Ingresará una mascota?" required>
+      <input type="file" name="archivo" required>
+      <input type="text" name="sag" placeholder="Declaración SAG" required>
+      <input type="text" name="pasaporte" placeholder="Pasaporte vigente" required>
 
       <div class="tramite-submit">
         <button type="submit">Enviar Trámite</button>
@@ -47,13 +45,7 @@
     </form>
   </section>
 
-  <script>
-    document.getElementById("tramiteForm")?.addEventListener("submit", function (e) {
-      e.preventDefault();
-      alert("✅ Trámite recibido con éxito");
-      this.reset();
-    });
-  </script>
+
 
   <footer class="gov-footer">
     <div class="footer-content">
@@ -85,5 +77,6 @@
 
   <script src="js/main.js"></script>
   <script src="js/script.js"></script>
+
 </body>
 </html>
