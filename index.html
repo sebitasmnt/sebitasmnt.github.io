@@ -1,0 +1,88 @@
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  
+  <title>Iniciar Sesión</title>
+  <link href="./assets/css/login.css.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/logo.svg" alt="" class="logo-img" />
+        </a>
+      </div>
+      <nav>
+        <a class="btn-registrarse" href="registro.html">Registrarse ahora →</a>
+        <span id="usuarioNavbar"></span>
+      </nav>
+    </div>
+  </header>
+  <section class="hero" style="display: flex; justify-content: space-around; align-items: center;">
+    <div class="form-box">
+      <h3>Iniciar sesión</h3>
+      <p>Inicia sesión en LEVEL UP GAMER</p>
+      <form id="loginForm">
+        <label>Email</label>
+        <input id="email" placeholder="Inserte su email" required="" type="email" />
+        <label>Contraseña</label>
+        <input id="password" placeholder="Inserte su contraseña" required="" type="password" />
+        <button class="submit-btn" type="submit">Ingresar</button>
+        <p style="margin-top: 1rem; text-align: center;">
+          <a href="#" onclick="enviarCorreo()" style="color: #00f2ff;">¿Olvidaste tu contraseña?</a>
+        </p>
+        <p class="error" id="loginError">Credenciales inválidas</p>
+      </form>
+    </div>
+    <div>
+      <img alt="" src="" style="width: 400px; max-width: 100%;" />
+    </div>
+  </section>
+  <script src="js/script.js"></script>
+  <script>
+    document.querySelector("form")?.addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("✅ Inicio de sesión exitoso");
+      this.reset();
+    });
+  </script>
+  <footer class="gov-footer">
+    <div class="footer-content">
+      <div class="footer-col logo-col">
+        <img src="assets/logo.svg" alt="" class="logo-footer" />
+      </div>
+
+      <div class="footer-col links-col">
+   </a>
+      </div>
+
+      <div class="footer-col call-col">
+        <p><strong><i class="fas fa-phone-alt"></i> Ayuda Telefónica</strong><br />600 123 4567</p>
+      </div>
+
+      <div class="footer-col contact-col">
+        <p><strong><i class="fas fa-question-circle"></i> Consultas</strong><br /><a href="#">¡Contáctanos!</a></p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col gov-col">
+        <img src="" alt="" class="" />
+      </div>
+    </div>
+  </footer>
+
+</body>
+<script src="js/main.js"></script>
+<script src="js/script.js"></script>
+
+</html>
