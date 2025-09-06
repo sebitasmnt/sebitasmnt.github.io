@@ -95,11 +95,33 @@ nav a {
   margin-top: 30px;
 }
 
+.producto-lista {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+#producto-img{
+  width: 200px;
+}
+
 .producto {
   background: #111;
   padding: 30px;
   border-radius: 10px;
   transition: 0.3s;
+}
+
+.juego {
+  background: #111;
+  padding: 30px;
+  border-radius: 10px;
+  transition: 0.3s;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .producto:hover {
@@ -121,4 +143,28 @@ footer {
   background: #000;
   font-size: 0.9em;
   color: #D3D3D3;
+}
+
+.btn-carrito {
+  background: linear-gradient(90deg, #00ffea 0%, #0077ff 100%);
+  color: #181a1b;
+  font-family: 'Orbitron', 'Roboto', sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7em 1.2em;
+  cursor: pointer;
+  font-size: 1em;
+  box-shadow: 0 0 8px #00ffea88;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  width: 200px;
+}
+
+.btn-carrito:hover {
+  background: linear-gradient(90deg, #0077ff 0%, #00ffea 100%);
+  color: #fff;
+  box-shadow: 0 0 16px #00ffea;
 }

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./assets/css/registro.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="js/registro.js" defer></script>
 </head>
 <body>
   <header>
@@ -26,11 +27,12 @@
     <div class="card">
       <h1 class="title">Crear cuenta</h1>
       <p class="muted">Regístrate para guardar tus pedidos y recibir ofertas.</p>
-      <form class="form-grid" onsubmit="event.preventDefault(); alert('¡Cuenta creada!');">
+      <form class="form-grid" id="registroForm">
         <div><label>Nombre</label><input class="input" required></div>
         <div><label>Apellido</label><input class="input" required></div>
         <div><label>Email</label><input class="input" type="email" required></div>
         <div><label>Teléfono</label><input class="input" type="tel" placeholder="+56 9 ..."></div>
+        <div><label>Edad</label><input class="input" type="number" min="0" id="edad" required></div>
         <div class="col-2"><label>Dirección</label><input class="input"></div>
         <div><label>Comuna</label><input class="input"></div>
         <div><label>Región</label><select class="input"><option>RM</option></select></div>
@@ -47,5 +49,6 @@
   <footer>
     <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
   </footer>
+
 </body>
 </html>
