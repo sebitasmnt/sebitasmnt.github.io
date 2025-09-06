@@ -1,88 +1,51 @@
+<!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  
-  <title>Iniciar Sesión</title>
-  <link href="./assets/css/login.css.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level-Up Gamer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
   <header>
-    <div class="container">
-      <div class="logo">
-        <a href="index.html">
-          <img src="assets/logo.svg" alt="" class="logo-img" />
-        </a>
-      </div>
-      <nav>
-        <a class="btn-registrarse" href="registro.html">Registrarse ahora →</a>
-        <span id="usuarioNavbar"></span>
-      </nav>
-    </div>
+    <div class="logo">🎮 Level-Up Gamer</div>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Inicio</a></li>
+        <li><a href="./productos.html">Productos</a></li>
+        <li><a href="./comunidad.html">Comunidad</a></li>
+        <li><a href="./carrito.html"><i class="fa-solid fa-cart-plus"></i></a></li>
+      </ul>
+    </nav>
   </header>
-  <section class="hero" style="display: flex; justify-content: space-around; align-items: center;">
-    <div class="form-box">
-      <h3>Iniciar sesión</h3>
-      <p>Inicia sesión en LEVEL UP GAMER</p>
-      <form id="loginForm">
-        <label>Email</label>
-        <input id="email" placeholder="Inserte su email" required="" type="email" />
-        <label>Contraseña</label>
-        <input id="password" placeholder="Inserte su contraseña" required="" type="password" />
-        <button class="submit-btn" type="submit">Ingresar</button>
-        <p style="margin-top: 1rem; text-align: center;">
-          <a href="#" onclick="enviarCorreo()" style="color: #00f2ff;">¿Olvidaste tu contraseña?</a>
-        </p>
-        <p class="error" id="loginError">Credenciales inválidas</p>
-      </form>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <h1>¡Desafía tus límites con <span>Level-Up Gamer</span>!</h1>
+    <p>Conviértete en el héroe de tu propia historia. Explora, juega y gana con nosotros.</p>
+    <a href="./productos.html" class="btn">Explorar Catálogo</a>
+  </section>
+
+  <!-- Misión y Visión -->
+  <section class="info">
+    <div class="card">
+      <h2>Misión</h2>
+      <p>Proporcionar productos de alta calidad para gamers en todo Chile, con una experiencia de compra única y personalizada.</p>
     </div>
-    <div>
-      <img alt="" src="" style="width: 400px; max-width: 100%;" />
+    <div class="card">
+      <h2>Visión</h2>
+      <p>Ser la tienda online líder en Chile, reconocida por innovación, servicio excepcional y un programa de fidelización basado en gamificación.</p>
     </div>
   </section>
-  <script src="js/script.js"></script>
-  <script>
-    document.querySelector("form")?.addEventListener("submit", function (e) {
-      e.preventDefault();
-      alert("✅ Inicio de sesión exitoso");
-      this.reset();
-    });
-  </script>
-  <footer class="gov-footer">
-    <div class="footer-content">
-      <div class="footer-col logo-col">
-        <img src="assets/logo.svg" alt="" class="logo-footer" />
-      </div>
 
-      <div class="footer-col links-col">
-   </a>
-      </div>
 
-      <div class="footer-col call-col">
-        <p><strong><i class="fas fa-phone-alt"></i> Ayuda Telefónica</strong><br />600 123 4567</p>
-      </div>
 
-      <div class="footer-col contact-col">
-        <p><strong><i class="fas fa-question-circle"></i> Consultas</strong><br /><a href="#">¡Contáctanos!</a></p>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
 
-      <div class="footer-col gov-col">
-        <img src="" alt="" class="" />
-      </div>
-    </div>
+  <!-- Footer -->
+  <footer id="contacto">
+    <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
   </footer>
-
 </body>
-<script src="js/main.js"></script>
-<script src="js/script.js"></script>
-
 </html>
