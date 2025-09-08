@@ -29,3 +29,4 @@ document.getElementById('loginBtn').addEventListener('click', function(e) {
     e.preventDefault();  // Prevenir el comportamiento por defecto del formulario
     verificarLogin();  // Verificar las credenciales
 });
+

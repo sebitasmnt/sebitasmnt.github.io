@@ -112,6 +112,28 @@ nav a {
   transition: 0.3s;
 }
 
+.carrito{
+  display: flex;
+  flex-wrap: wrap; /* Los productos se ajustarán automáticamente en filas */
+  gap: 20px;
+  justify-content: space-between;
+    background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  width: 40%;
+  box-shadow: 0px 0px 10px #1E90FF;
+}
+
+
+.productos-carrito {
+  display: flex;
+  flex-wrap: wrap; /* Los productos se ajustarán automáticamente en filas */
+  gap: 20px;
+  justify-content: space-between;
+  
+}
+
+
 .juego {
   background: #111;
   padding: 30px;

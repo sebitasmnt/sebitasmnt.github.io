@@ -7,8 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/registro.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script src="js/registro.js" defer></script>
 </head>
 <body>
   <header>
@@ -18,7 +16,7 @@
         <li><a href="./index.html">Inicio</a></li>
         <li><a href="./productos.html">Productos</a></li>
         <li><a href="./comunidad.html">Comunidad</a></li>
-        <li><a href="./carrito.html"><i class="fa-solid fa-cart-plus"></i></a></li>
+        <li><a href="./carrito.html"><i class="fa-solid fa-cart-plus"></i><span id="carritoCount">0</span></a></li>
       </ul>
     </nav>
   </header>
@@ -28,16 +26,16 @@
       <h1 class="title">Crear cuenta</h1>
       <p class="muted">Regístrate para guardar tus pedidos y recibir ofertas.</p>
       <form class="form-grid" id="registroForm">
-        <div><label>Nombre</label><input class="input" required></div>
-        <div><label>Apellido</label><input class="input" required></div>
-        <div><label>Email</label><input class="input" type="email" required></div>
-        <div><label>Teléfono</label><input class="input" type="tel" placeholder="+56 9 ..."></div>
+        <div><label>Nombre</label><input class="input" id="nombre" required></div>
+        <div><label>Apellido</label><input class="input" id="apellido" required></div>
+        <div><label>Email</label><input class="input" type="email" id="email" required></div>
+        <div><label>Teléfono</label><input class="input" type="tel" placeholder="+56 9 ..." id="telefono"></div>
         <div><label>Edad</label><input class="input" type="number" min="0" id="edad" required></div>
-        <div class="col-2"><label>Dirección</label><input class="input"></div>
-        <div><label>Comuna</label><input class="input"></div>
-        <div><label>Región</label><select class="input"><option>RM</option></select></div>
-        <div><label>Contraseña</label><input class="input" type="password" required></div>
-        <div><label>Confirmar</label><input class="input" type="password" required></div>
+        <div><label>Dirección</label><input class="input" id="direccion"></div>
+        <div><label>Comuna</label><input class="input" id="comuna"></div>
+        <div><label>Región</label><select class="input" id="region"><option>RM</option></select></div>
+        <div><label>Contraseña</label><input class="input" type="password" required id="password"></div>
+        <div><label>Confirmar</label><input class="input" type="password" required id="confirmarPassword"></div>
         <div class="col-2 actions">
           <a class="btn btn--ghost" href="login.html">¿Ya tienes cuenta?</a>
           <button class="btn btn--primary">Crear cuenta</button>
@@ -45,6 +43,7 @@
       </form>
     </div>
   </main>
+
 
   <footer>
     <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
