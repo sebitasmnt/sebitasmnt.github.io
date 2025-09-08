@@ -168,3 +168,24 @@ footer {
   color: #fff;
   box-shadow: 0 0 16px #00ffea;
 }
+
+.buscador-productos{
+
+   display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */ /* Hace que el contenedor ocupe toda la altura de la ventana */
+  margin: 0; /* Elimina márgenes por defecto */
+}
+
+
+#buscadorInput {
+  width: 300px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  padding: 10px; 
+  border-radius: 8px; 
+  border: 1px solid #1E90FF; 
+  margin-bottom: 30px;
+}
+

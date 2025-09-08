@@ -20,22 +20,23 @@
       </ul>
     </nav>
   </header>
+  
   <main class="main">
     <div class="card">
       <h1 class="title">Iniciar Sesión</h1>
       <p class="muted">Ingresa tus credenciales para continuar.</p>
-      <form class="form-grid" onsubmit="event.preventDefault(); alert('¡Bienvenido!');">
+      <form class="form-grid" id="loginForm" onsubmit="event.preventDefault(); verificarLogin();">
         <div class="col-2">
           <label>Email</label>
-          <input class="input" type="email" required>
+          <input class="input" type="email" id="username" required>
         </div>
         <div class="col-2">
           <label>Contraseña</label>
-          <input class="input" type="password" required>
+          <input class="input" type="password" id="password" required>
         </div>
         <div class="col-2 actions">
           <a class="btn btn--ghost" href="registro.html">¿No tienes cuenta?</a>
-          <button class="btn btn--primary">Entrar</button>
+          <button class="btn btn--primary" id="loginBtn">Entrar</button>
         </div>
       </form>
     </div>
@@ -44,5 +45,8 @@
   <footer>
     <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Incluyendo el archivo JS -->
+  <script src="./js/login.js"></script>
 </body>
 </html>
