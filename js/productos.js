@@ -49,7 +49,7 @@ function actualizarCarritoUI() {
 // Escuchar los clics en los botones de "Agregar al carrito"
 document.querySelectorAll('.btn-carrito').forEach((button) => {
   button.addEventListener('click', (event) => {
-    const productoElemento = event.target.closest('.juego'); // Obtén el elemento del producto
+    const productoElemento = event.target.closest('.juego'); // Obtengo el elemento del producto
     const nombre = productoElemento.querySelector('h2').textContent;
     const precio = productoElemento.querySelector('.precio').textContent;
     const imagen = productoElemento.querySelector('img').src;
