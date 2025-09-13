@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Analytics | LEVEL-UP GAMER</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header role="banner">
+    <div class="logo" role="img" aria-label="Level-Up Gamer Logo">🎮 Level-Up Gamer</div>
+    <nav role="navigation" aria-label="Navegación de administración">
+      <ul>
+        <li><a href="./index-admin.html">Dashboard</a></li>
+        <li><a href="./gestion-productos.html">Productos</a></li>
+        <li><a href="./gestion-pedidos.html">Pedidos</a></li>
+        <li><a href="./analytics.html" aria-current="page">Analytics</a></li>
+        <li><a href="./gestion-usuarios.html">Usuarios</a></li>
+        <li><a href="#" onclick="logout()" aria-label="Cerrar sesión"><i class="fa-solid fa-sign-out-alt" aria-hidden="true"></i></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="admin-panel">
+      <div class="page-header">
+        <h1>Analytics y Reportes</h1>
+        <div class="header-actions">
+          <select id="timeRange" onchange="updateAnalytics()">
+            <option value="7">Últimos 7 días</option>
+            <option value="30" selected>Últimos 30 días</option>
+            <option value="90">Últimos 90 días</option>
+            <option value="365">Último año</option>
+          </select>
+          <button class="btn btn--ghost" onclick="exportReport()">
+            <i class="fa-solid fa-download" aria-hidden="true"></i>
+            Exportar Reporte
+          </button>
+        </div>
+      </div>
+
+      <!-- Métricas principales -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fa-solid fa-dollar-sign" aria-hidden="true"></i>
+          </div>
+          <div class="metric-content">
+            <h3>Ingresos Totales</h3>
+            <p id="totalRevenue">$0 CLP</p>
+            <small id="revenueChange">+0% vs período anterior</small>
+          </div>
+        </div>
+        
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
+          </div>
+          <div class="metric-content">
+            <h3>Pedidos Totales</h3>
+            <p id="totalOrders">0</p>
+            <small id="ordersChange">+0% vs período anterior</small>
+          </div>
+        </div>
+        
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fa-solid fa-users" aria-hidden="true"></i>
+          </div>
+          <div class="metric-content">
+            <h3>Nuevos Usuarios</h3>
+            <p id="newUsers">0</p>
+            <small id="usersChange">+0% vs período anterior</small>
+          </div>
+        </div>
+        
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+          </div>
+          <div class="metric-content">
+            <h3>Ticket Promedio</h3>
+            <p id="averageTicket">$0 CLP</p>
+            <small id="ticketChange">+0% vs período anterior</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gráficos -->
+      <div class="charts-grid">
+        <div class="chart-container">
+          <div class="chart-header">
+            <h3>Ingresos por Día</h3>
+            <div class="chart-controls">
+              <button class="chart-btn active" onclick="showChart('revenue', 'line')">Línea</button>
+              <button class="chart-btn" onclick="showChart('revenue', 'bar')">Barras</button>
+            </div>
+          </div>
+          <canvas id="revenueChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+          <div class="chart-header">
+            <h3>Pedidos por Estado</h3>
+          </div>
+          <canvas id="ordersStatusChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+          <div class="chart-header">
+            <h3>Productos Más Vendidos</h3>
+          </div>
+          <canvas id="topProductsChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+          <div class="chart-header">
+            <h3>Ventas por Categoría</h3>
+          </div>
+          <canvas id="categorySalesChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Tablas de datos -->
+      <div class="tables-grid">
+        <div class="table-container">
+          <h3>Top 10 Productos Más Vendidos</h3>
+          <div class="table-scroll">
+            <table class="analytics-table">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Categoría</th>
+                  <th>Vendidos</th>
+                  <th>Ingresos</th>
+                </tr>
+              </thead>
+              <tbody id="topProductsTable">
+                <!-- Se llenará dinámicamente -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <h3>Usuarios Más Activos</h3>
+          <div class="table-scroll">
+            <table class="analytics-table">
+              <thead>
+                <tr>
+                  <th>Usuario</th>
+                  <th>Email</th>
+                  <th>Pedidos</th>
+                  <th>Total Gastado</th>
+                </tr>
+              </thead>
+              <tbody id="topUsersTable">
+                <!-- Se llenará dinámicamente -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resumen de rendimiento -->
+      <div class="performance-summary">
+        <h3>Resumen de Rendimiento</h3>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <h4>Conversión</h4>
+            <p id="conversionRate">0%</p>
+            <small>Usuarios que realizan pedidos</small>
+          </div>
+          <div class="summary-item">
+            <h4>Tiempo Promedio de Entrega</h4>
+            <p id="avgDeliveryTime">0 días</p>
+            <small>Desde pedido hasta entrega</small>
+          </div>
+          <div class="summary-item">
+            <h4>Stock Crítico</h4>
+            <p id="criticalStock">0 productos</p>
+            <small>Productos con stock bajo</small>
+          </div>
+          <div class="summary-item">
+            <h4>Satisfacción</h4>
+            <p id="satisfactionRate">0%</p>
+            <small>Pedidos entregados sin problemas</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="./js/userManager.js"></script>
+  <script src="./js/productManager.js"></script>
+  <script src="./js/orderManager.js"></script>
+  <script>
+    let charts = {};
+    let currentTimeRange = 30;
+
+    // Inicializar página
+    document.addEventListener('DOMContentLoaded', function() {
+      checkAdminAuth();
+      initializeCharts();
+      updateAnalytics();
+    });
+
+    function checkAdminAuth() {
+      const currentUser = window.userManager.getCurrentUser();
+      if (!currentUser || currentUser.role !== 'admin') {
+        window.location.href = './login.html';
+        return;
+      }
+    }
+
+    function initializeCharts() {
+      // Configuración común para todos los gráficos
+      Chart.defaults.color = '#FFFFFF';
+      Chart.defaults.borderColor = '#333333';
+      Chart.defaults.backgroundColor = 'rgba(30, 144, 255, 0.1)';
+    }
+
+    function updateAnalytics() {
+      currentTimeRange = parseInt(document.getElementById('timeRange').value);
+      loadMetrics();
+      loadCharts();
+      loadTables();
+      loadPerformanceSummary();
+    }
+
+    function loadMetrics() {
+      const orderStats = window.orderManager.getOrderStats();
+      const userStats = window.userManager.getUserStats();
+      const productStats = window.productManager.getProductStats();
+
+      // Calcular métricas del período seleccionado
+      const endDate = new Date();
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - currentTimeRange);
+
+      const periodOrders = window.orderManager.getOrdersByDateRange(startDate, endDate);
+      const periodRevenue = periodOrders
+        .filter(order => order.status === 'delivered')
+        .reduce((total, order) => total + order.totals.total, 0);
+
+      const periodUsers = window.userManager.users.filter(user => {
+        const userDate = new Date(user.createdAt);
+        return userDate >= startDate && userDate <= endDate;
+      });
+
+      // Actualizar métricas principales
+      document.getElementById('totalRevenue').textContent = `$${periodRevenue.toLocaleString()} CLP`;
+      document.getElementById('totalOrders').textContent = periodOrders.length;
+      document.getElementById('newUsers').textContent = periodUsers.length;
+      
+      const avgTicket = periodOrders.length > 0 ? periodRevenue / periodOrders.length : 0;
+      document.getElementById('averageTicket').textContent = `$${Math.round(avgTicket).toLocaleString()} CLP`;
+
+      // Calcular cambios porcentuales (simulado)
+      document.getElementById('revenueChange').textContent = `+${Math.floor(Math.random() * 20 + 5)}% vs período anterior`;
+      document.getElementById('ordersChange').textContent = `+${Math.floor(Math.random() * 15 + 3)}% vs período anterior`;
+      document.getElementById('usersChange').textContent = `+${Math.floor(Math.random() * 25 + 8)}% vs período anterior`;
+      document.getElementById('ticketChange').textContent = `+${Math.floor(Math.random() * 10 + 2)}% vs período anterior`;
+    }
+
+    function loadCharts() {
+      loadRevenueChart();
+      loadOrdersStatusChart();
+      loadTopProductsChart();
+      loadCategorySalesChart();
+    }
+
+    function loadRevenueChart() {
+      const ctx = document.getElementById('revenueChart').getContext('2d');
+      
+      // Generar datos de ingresos por día
+      const labels = [];
+      const revenueData = [];
+      const ordersData = [];
+      
+      for (let i = currentTimeRange - 1; i >= 0; i--) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        labels.push(date.toLocaleDateString('es-CL', { month: 'short', day: 'numeric' }));
+        
+        // Simular datos (en producción vendrían de la base de datos)
+        revenueData.push(Math.floor(Math.random() * 500000 + 100000));
+        ordersData.push(Math.floor(Math.random() * 20 + 5));
+      }
+
+      if (charts.revenue) {
+        charts.revenue.destroy();
+      }
+
+      charts.revenue = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Ingresos (CLP)',
+            data: revenueData,
+            borderColor: '#1E90FF',
+            backgroundColor: 'rgba(30, 144, 255, 0.1)',
+            tension: 0.4,
+            yAxisID: 'y'
+          }, {
+            label: 'Pedidos',
+            data: ordersData,
+            borderColor: '#39FF14',
+            backgroundColor: 'rgba(57, 255, 20, 0.1)',
+            tension: 0.4,
+            yAxisID: 'y1'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              labels: {
+                color: '#FFFFFF'
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: '#FFFFFF'
+              },
+              grid: {
+                color: '#333333'
+              }
+            },
+            y: {
+              type: 'linear',
+              display: true,
+              position: 'left',
+              ticks: {
+                color: '#FFFFFF',
+                callback: function(value) {
+                  return '$' + value.toLocaleString();
+                }
+              },
+              grid: {
+                color: '#333333'
+              }
+            },
+            y1: {
+              type: 'linear',
+              display: true,
+              position: 'right',
+              ticks: {
+                color: '#FFFFFF'
+              },
+              grid: {
+                drawOnChartArea: false,
+                color: '#333333'
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function loadOrdersStatusChart() {
+      const ctx = document.getElementById('ordersStatusChart').getContext('2d');
+      const orderStats = window.orderManager.getOrderStats();
+
+      if (charts.ordersStatus) {
+        charts.ordersStatus.destroy();
+      }
+
+      charts.ordersStatus = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Pendientes', 'Confirmados', 'Procesando', 'Enviados', 'Entregados', 'Cancelados'],
+          datasets: [{
+            data: [
+              orderStats.pendingOrders,
+              orderStats.confirmedOrders,
+              orderStats.processingOrders,
+              orderStats.shippedOrders,
+              orderStats.deliveredOrders,
+              orderStats.cancelledOrders
+            ],
+            backgroundColor: [
+              '#FFA500',
+              '#1E90FF',
+              '#9370DB',
+              '#32CD32',
+              '#39FF14',
+              '#FF4444'
+            ]
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#FFFFFF'
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function loadTopProductsChart() {
+      const ctx = document.getElementById('topProductsChart').getContext('2d');
+      const topProducts = window.orderManager.getOrderStats().topProducts.slice(0, 5);
+
+      if (charts.topProducts) {
+        charts.topProducts.destroy();
+      }
+
+      charts.topProducts = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: topProducts.map(p => p.name.length > 15 ? p.name.substring(0, 15) + '...' : p.name),
+          datasets: [{
+            label: 'Cantidad Vendida',
+            data: topProducts.map(p => p.quantity),
+            backgroundColor: 'rgba(30, 144, 255, 0.8)',
+            borderColor: '#1E90FF',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              labels: {
+                color: '#FFFFFF'
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: '#FFFFFF'
+              },
+              grid: {
+                color: '#333333'
+              }
+            },
+            y: {
+              ticks: {
+                color: '#FFFFFF'
+              },
+              grid: {
+                color: '#333333'
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function loadCategorySalesChart() {
+      const ctx = document.getElementById('categorySalesChart').getContext('2d');
+      const categories = window.productManager.categories;
+      const categoryData = categories.map(category => {
+        const products = window.productManager.getProductsByCategory(category.id);
+        const totalValue = products.reduce((sum, product) => sum + (product.price * product.stock), 0);
+        return { name: category.name, value: totalValue };
+      });
+
+      if (charts.categorySales) {
+        charts.categorySales.destroy();
+      }
+
+      charts.categorySales = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: categoryData.map(c => c.name),
+          datasets: [{
+            data: categoryData.map(c => c.value),
+            backgroundColor: [
+              '#1E90FF',
+              '#39FF14',
+              '#FFA500',
+              '#9370DB',
+              '#32CD32',
+              '#FF4444',
+              '#FF69B4',
+              '#00CED1',
+              '#FFD700'
+            ]
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#FFFFFF'
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function loadTables() {
+      loadTopProductsTable();
+      loadTopUsersTable();
+    }
+
+    function loadTopProductsTable() {
+      const topProducts = window.orderManager.getOrderStats().topProducts.slice(0, 10);
+      const tbody = document.getElementById('topProductsTable');
+      
+      tbody.innerHTML = topProducts.map(product => {
+        const productInfo = window.productManager.products.find(p => p.name === product.name);
+        const category = productInfo ? window.productManager.categories.find(c => c.id === productInfo.category)?.name : 'N/A';
+        const revenue = productInfo ? product.quantity * productInfo.price : 0;
+        
+        return `
+          <tr>
+            <td>${product.name}</td>
+            <td>${category}</td>
+            <td>${product.quantity}</td>
+            <td>$${revenue.toLocaleString()} CLP</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function loadTopUsersTable() {
+      const users = window.userManager.users;
+      const userStats = users.map(user => {
+        const userOrders = window.orderManager.getUserOrders(user.id);
+        const totalSpent = userOrders
+          .filter(order => order.status === 'delivered')
+          .reduce((sum, order) => sum + order.totals.total, 0);
+        
+        return {
+          ...user,
+          orderCount: userOrders.length,
+          totalSpent: totalSpent
+        };
+      }).sort((a, b) => b.totalSpent - a.totalSpent).slice(0, 10);
+
+      const tbody = document.getElementById('topUsersTable');
+      tbody.innerHTML = userStats.map(user => `
+        <tr>
+          <td>${user.firstName} ${user.lastName}</td>
+          <td>${user.email}</td>
+          <td>${user.orderCount}</td>
+          <td>$${user.totalSpent.toLocaleString()} CLP</td>
+        </tr>
+      `).join('');
+    }
+
+    function loadPerformanceSummary() {
+      const userStats = window.userManager.getUserStats();
+      const orderStats = window.orderManager.getOrderStats();
+      const productStats = window.productManager.getProductStats();
+
+      // Calcular métricas de rendimiento
+      const conversionRate = userStats.totalUsers > 0 ? 
+        (orderStats.totalOrders / userStats.totalUsers * 100).toFixed(1) : 0;
+      
+      const avgDeliveryTime = 3; // Simulado
+      const criticalStock = productStats.lowStockProducts;
+      const satisfactionRate = 95; // Simulado
+
+      document.getElementById('conversionRate').textContent = `${conversionRate}%`;
+      document.getElementById('avgDeliveryTime').textContent = `${avgDeliveryTime} días`;
+      document.getElementById('criticalStock').textContent = criticalStock;
+      document.getElementById('satisfactionRate').textContent = `${satisfactionRate}%`;
+    }
+
+    function showChart(chartType, chartType2) {
+      // Cambiar tipo de gráfico (implementación básica)
+      const buttons = document.querySelectorAll('.chart-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // En una implementación más avanzada, aquí se cambiaría el tipo de gráfico
+    }
+
+    function exportReport() {
+      const reportData = {
+        metrics: {
+          totalRevenue: document.getElementById('totalRevenue').textContent,
+          totalOrders: document.getElementById('totalOrders').textContent,
+          newUsers: document.getElementById('newUsers').textContent,
+          averageTicket: document.getElementById('averageTicket').textContent
+        },
+        performance: {
+          conversionRate: document.getElementById('conversionRate').textContent,
+          avgDeliveryTime: document.getElementById('avgDeliveryTime').textContent,
+          criticalStock: document.getElementById('criticalStock').textContent,
+          satisfactionRate: document.getElementById('satisfactionRate').textContent
+        },
+        period: `${currentTimeRange} días`,
+        generatedAt: new Date().toLocaleString('es-CL')
+      };
+
+      const reportContent = `
+REPORTE DE ANALYTICS - LEVEL-UP GAMER
+Período: ${reportData.period}
+Generado: ${reportData.generatedAt}
+
+MÉTRICAS PRINCIPALES:
+- Ingresos Totales: ${reportData.metrics.totalRevenue}
+- Pedidos Totales: ${reportData.metrics.totalOrders}
+- Nuevos Usuarios: ${reportData.metrics.newUsers}
+- Ticket Promedio: ${reportData.metrics.averageTicket}
+
+RENDIMIENTO:
+- Tasa de Conversión: ${reportData.performance.conversionRate}
+- Tiempo Promedio de Entrega: ${reportData.performance.avgDeliveryTime}
+- Stock Crítico: ${reportData.performance.criticalStock} productos
+- Tasa de Satisfacción: ${reportData.performance.satisfactionRate}
+      `;
+
+      const blob = new Blob([reportContent], { type: 'text/plain;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', `reporte-analytics-${new Date().toISOString().split('T')[0]}.txt`);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      showNotification('Reporte exportado exitosamente', 'success');
+    }
+
+    function logout() {
+      if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+        window.userManager.logout();
+        window.location.href = './index.html';
+      }
+    }
+
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.textContent = message;
+      
+      const colors = {
+        success: '#39FF14',
+        error: '#FF4444',
+        info: '#1E90FF'
+      };
+
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${colors[type] || colors.info};
+        color: ${type === 'success' ? '#000' : '#fff'};
+        padding: 15px 20px;
+        border-radius: 8px;
+        z-index: 1000;
+        animation: slideIn 0.3s ease;
+        max-width: 400px;
+        word-wrap: break-word;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      `;
+
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.remove();
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

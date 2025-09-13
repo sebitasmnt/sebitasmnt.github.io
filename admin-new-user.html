@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Usuario - Level-Up Gamer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/admin.css">
+    <link rel="stylesheet" href="./assets/css/admin-components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar izquierdo -->
+        <aside class="admin-sidebar">
+            <div class="logo">
+                <img src="./assets/img/logo.svg" alt="Level-Up Gamer Logo">
+            </div>
+            <nav>
+                <ul class="admin-nav">
+                    <li><a href="./admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="./admin-orders.html"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                    <li><a href="./admin-inventory.html"><i class="fas fa-boxes"></i> Inventory</a></li>
+                    <li><a href="./admin-reports.html"><i class="fas fa-chart-bar"></i> Reports</a></li>
+                    <li><a href="./admin-employees.html"><i class="fas fa-users"></i> Employees</a></li>
+                    <li><a href="./admin-customers.html"><i class="fas fa-user-friends"></i> Customers</a></li>
+                    <li><a href="./admin-settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="./admin-profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="./admin-search.html"><i class="fas fa-search"></i> Search</a></li>
+                    <li><a href="./admin-help.html"><i class="fas fa-question-circle"></i> Help</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Área principal -->
+        <main class="admin-main">
+            <!-- Header superior -->
+            <header class="admin-header">
+                <h1>Nuevo Usuario</h1>
+                <div class="notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+            </header>
+
+            <!-- Contenido principal -->
+            <div class="admin-content">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>NUEVO USUARIO</h2>
+                    </div>
+
+                    <form id="userForm" class="user-form">
+                        <div class="form-grid">
+                            <!-- RUN -->
+                            <div class="form-group">
+                                <label for="run">RUN <span class="required">*</span></label>
+                                <input type="text" id="run" name="run" placeholder="Ej: 19011022K" maxlength="9" required>
+                                <small class="form-help">Sin puntos ni guión. Min: 7, Max: 9 caracteres</small>
+                            </div>
+
+                            <!-- Nombre -->
+                            <div class="form-group">
+                                <label for="nombre">Nombre <span class="required">*</span></label>
+                                <input type="text" id="nombre" name="nombre" maxlength="50" required>
+                                <small class="form-help">Máximo 50 caracteres</small>
+                            </div>
+
+                            <!-- Apellidos -->
+                            <div class="form-group">
+                                <label for="apellidos">Apellidos <span class="required">*</span></label>
+                                <input type="text" id="apellidos" name="apellidos" maxlength="100" required>
+                                <small class="form-help">Máximo 100 caracteres</small>
+                            </div>
+
+                            <!-- Correo -->
+                            <div class="form-group">
+                                <label for="correo">Correo <span class="required">*</span></label>
+                                <input type="email" id="correo" name="correo" maxlength="100" required>
+                                <small class="form-help">Solo @duoc.cl, @profesor.duoc.cl y @gmail.com</small>
+                            </div>
+
+                            <!-- Fecha de Nacimiento -->
+                            <div class="form-group">
+                                <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                                <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+                            </div>
+
+                            <!-- Tipo de Usuario -->
+                            <div class="form-group">
+                                <label for="tipoUsuario">Tipo de Usuario <span class="required">*</span></label>
+                                <select id="tipoUsuario" name="tipoUsuario" required>
+                                    <option value="">Seleccionar tipo</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="cliente">Cliente</option>
+                                    <option value="vendedor">Vendedor</option>
+                                </select>
+                            </div>
+
+                            <!-- Región -->
+                            <div class="form-group">
+                                <label for="region">Región <span class="required">*</span></label>
+                                <select id="region" name="region" required>
+                                    <option value="">Seleccionar región</option>
+                                    <option value="metropolitana">Región Metropolitana</option>
+                                    <option value="valparaiso">Región de Valparaíso</option>
+                                    <option value="ohiggins">Región del Libertador General Bernardo O'Higgins</option>
+                                    <option value="maule">Región del Maule</option>
+                                    <option value="biobio">Región del Biobío</option>
+                                    <option value="araucania">Región de La Araucanía</option>
+                                    <option value="losrios">Región de Los Ríos</option>
+                                    <option value="loslagos">Región de Los Lagos</option>
+                                    <option value="aysen">Región Aysén del General Carlos Ibáñez del Campo</option>
+                                    <option value="magallanes">Región de Magallanes y de la Antártica Chilena</option>
+                                    <option value="tarapaca">Región de Tarapacá</option>
+                                    <option value="antofagasta">Región de Antofagasta</option>
+                                    <option value="atacama">Región de Atacama</option>
+                                    <option value="coquimbo">Región de Coquimbo</option>
+                                </select>
+                            </div>
+
+                            <!-- Comuna -->
+                            <div class="form-group">
+                                <label for="comuna">Comuna <span class="required">*</span></label>
+                                <select id="comuna" name="comuna" required disabled>
+                                    <option value="">Primero seleccione una región</option>
+                                </select>
+                            </div>
+
+                            <!-- Dirección -->
+                            <div class="form-group full-width">
+                                <label for="direccion">Dirección <span class="required">*</span></label>
+                                <input type="text" id="direccion" name="direccion" maxlength="300" required>
+                                <small class="form-help">Máximo 300 caracteres</small>
+                            </div>
+
+                            <!-- Selectores adicionales -->
+                            <div class="form-group">
+                                <label for="registroEn">El usuario se registra en...</label>
+                                <select id="registroEn" name="registroEn">
+                                    <option value="">Seleccionar</option>
+                                    <option value="sistema">Sistema Principal</option>
+                                    <option value="tienda">Tienda Online</option>
+                                    <option value="admin">Panel Administrativo</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="asignadoA">El usuario se asigna a...</label>
+                                <select id="asignadoA" name="asignadoA">
+                                    <option value="">Seleccionar</option>
+                                    <option value="ventas">Departamento de Ventas</option>
+                                    <option value="soporte">Departamento de Soporte</option>
+                                    <option value="marketing">Departamento de Marketing</option>
+                                    <option value="administracion">Administración</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit">REGISTRAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
