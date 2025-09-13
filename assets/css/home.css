@@ -124,6 +124,19 @@ nav a {
   box-shadow: 0px 0px 10px #1E90FF;
 }
 
+#contactos{
+  display: flex;
+  flex-direction: row;
+  gap:2rem;
+  margin: 0rem 12rem 0rem 12rem;
+}
+
+#contact-element{
+  flex-grow: 1;
+  height: 200px;
+  background-color: #000000;
+  color: white;
+}
 
 .productos-carrito {
   display: flex;
