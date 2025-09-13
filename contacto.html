@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Level-Up Gamer</title>
+  <title>Contacto | Level-Up Gamer</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -22,29 +22,44 @@
     </nav>
   </header>
 
-  <!-- Hero -->
-  <section id="inicio" class="hero">
-    <h1>¡Desafía tus límites con <span>Level-Up Gamer</span>!</h1>
-    <p>Conviértete en el héroe de tu propia historia. Explora, juega y gana con nosotros.</p>
-    <a href="./productos.html" class="btn">Explorar Catálogo</a>
+  <section class="hero">
+    <h1>Contáctanos</h1>
+    <p>¿Tienes dudas, sugerencias o quieres saber más? ¡Escríbenos!</p>
   </section>
 
-  <!-- Misión y Visión -->
   <section class="info">
     <div class="card">
-      <h2>Misión</h2>
-      <p>Proporcionar productos de alta calidad para gamers en todo Chile, con una experiencia de compra única y personalizada.</p>
+      <h2>Formulario de Contacto</h2>
+      <form>
+        <div>
+          <label for="nombre">Nombre</label>
+          <input class="input" type="text" id="nombre" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input class="input" type="email" id="email" required>
+        </div>
+        <div>
+          <label for="mensaje">Mensaje</label>
+          <textarea class="input" id="mensaje" rows="4" required></textarea>
+        </div>
+        <button class="btn" type="submit">Enviar</button>
+      </form>
     </div>
     <div class="card">
-      <h2>Visión</h2>
-      <p>Ser la tienda online líder en Chile, reconocida por innovación, servicio excepcional y un programa de fidelización basado en gamificación.</p>
+      <h2>Información</h2>
+      <p><i class="fa-solid fa-envelope"></i> contacto@levelupgamer.cl</p>
+      <p><i class="fa-solid fa-phone"></i> +56 9 1234 5678</p>
+      <p><i class="fa-solid fa-location-dot"></i> Santiago, Chile</p>
+      <p>Síguenos en redes sociales:</p>
+      <p>
+        <a href="#" style="color:#1E90FF;"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" style="color:#1E90FF;"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" style="color:#1E90FF;"><i class="fa-brands fa-twitter"></i></a>
+      </p>
     </div>
   </section>
 
-
-
-
-  <!-- Footer 2 -->
   <footer id="contacto">
     <div id="contactos">
         <div id="contact-element">
@@ -56,8 +71,8 @@
             <a href="index.html">Inicio</a>
             <a href="productos.html">Productos</a>
             <a href="comunidad.html">Comunidad</a>
+            <a href="contacto.html">Contacto</a>
           </div>
-          
         </div>
         <div id="contact-element">
           <h3>Nuestros productos</h3>
@@ -71,7 +86,6 @@
     <div id="endpage">
       <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
     </div>
-    
   </footer>
 </body>
 </html>
