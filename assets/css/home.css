@@ -127,15 +127,19 @@ nav a {
 #contactos{
   display: flex;
   flex-direction: row;
-  gap:2rem;
+  gap:7rem;
   margin: 0rem 12rem 0rem 12rem;
+  height: 125px;
+  
 }
 
 #contact-element{
   flex-grow: 1;
-  height: 200px;
+  height: 300px;
   background-color: #000000;
   color: white;
+  height: 5rem;
+  text-align: start;
 }
 
 .productos-carrito {
@@ -146,6 +150,10 @@ nav a {
   
 }
 
+#endpage{
+  height: 0.5rem;
+  width: 100%;
+}
 
 .juego {
   background: #111;
@@ -178,6 +186,27 @@ footer {
   background: #000;
   font-size: 0.9em;
   color: #D3D3D3;
+}
+
+#imgfooter{
+  width: 125px;
+}
+
+#footer-links{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#footer-links a{
+  color: rgb(43, 255, 57);
+  text-align: start;
+  font-size: 10px;
+}
+
+#footer-links a:hover{
+  color: rgb(9, 214, 255);
+  text-align: start;
 }
 
 .btn-carrito {
