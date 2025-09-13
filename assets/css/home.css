@@ -253,3 +253,57 @@ footer {
   margin-bottom: 30px;
 }
 
+.contact-form {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.contact-form label {
+  font-family: 'Orbitron', sans-serif;
+  color: #1E90FF;
+  font-weight: bold;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.contact-form .input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #1E90FF;
+  background: #111;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  transition: border 0.2s;
+}
+
+.contact-form .input:focus,
+.contact-form textarea:focus {
+  border: 1.5px solid #39FF14;
+  outline: none;
+}
+
+.contact-form button.btn {
+  background: #1E90FF;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  padding: 12px 0;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  margin-top: 8px;
+}
+
+.contact-form button.btn:hover {
+  background: #39FF14;
+  color: #000;
+}
+
