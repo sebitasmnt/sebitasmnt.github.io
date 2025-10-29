@@ -1,3 +1,6 @@
+// Asegura que las rutas funcionen en desarrollo y producción
+const base = import.meta.env.BASE_URL;
+
 export const productos = [
   {
     codigo: "JM001",
@@ -5,7 +8,7 @@ export const productos = [
     nombre: "Catan",
     precio: 29990,
     precio_texto: "$29.990 CLP",
-    imagen: "/assets/img/8436017220100-1200-face3d-copy3162-removebg-preview.png"
+    imagen: `${base}assets/img/8436017220100-1200-face3d-copy3162-removebg-preview.png`
   },
   {
     codigo: "JM002",
@@ -13,7 +16,7 @@ export const productos = [
     nombre: "Carcassonne",
     precio: 24990,
     precio_texto: "$24.990 CLP",
-    imagen: "/assets/img/carcassonne-removebg-preview.png"
+    imagen: `${base}assets/img/carcassonne-removebg-preview.png`
   },
   {
     codigo: "AC001",
@@ -21,7 +24,7 @@ export const productos = [
     nombre: "Controlador Inalámbrico Xbox Series X",
     precio: 59990,
     precio_texto: "$59.990 CLP",
-    imagen: "/assets/img/D_970114-MLA45317791910_032021-O_500x-removebg-preview.png"
+    imagen: `${base}assets/img/D_970114-MLA45317791910_032021-O_500x-removebg-preview.png`
   },
   {
     codigo: "AC002",
@@ -29,7 +32,7 @@ export const productos = [
     nombre: "Auriculares Gamer HyperX Cloud II",
     precio: 79990,
     precio_texto: "$79.990 CLP",
-    imagen: "/assets/img/cloud-ii-1_2-removebg-preview.png"
+    imagen: `${base}assets/img/cloud-ii-1_2-removebg-preview.png`
   },
   {
     codigo: "CO001",
@@ -37,7 +40,7 @@ export const productos = [
     nombre: "PlayStation 5",
     precio: 549990,
     precio_texto: "$549.990 CLP",
-    imagen: "/assets/img/ps5.png"
+    imagen: `${base}assets/img/ps5.png`
   },
   {
     codigo: "CG001",
@@ -45,7 +48,7 @@ export const productos = [
     nombre: "PC Gamer ASUS ROG Strix",
     precio: 1299990,
     precio_texto: "$1.299.990 CLP",
-    imagen: "/assets/img/52-removebg-preview.png"
+    imagen: `${base}assets/img/52-removebg-preview.png`
   },
   {
     codigo: "SG001",
@@ -53,7 +56,7 @@ export const productos = [
     nombre: "Silla Gamer Secretlab Titan",
     precio: 349990,
     precio_texto: "$349.990 CLP",
-    imagen: "/assets/img/minecra-removebg-preview.png"
+    imagen: `${base}assets/img/minecra-removebg-preview.png`
   },
   {
     codigo: "MS001",
@@ -61,7 +64,7 @@ export const productos = [
     nombre: "Mouse Gamer Logitech G502 HERO",
     precio: 49990,
     precio_texto: "$49.990 CLP",
-    imagen: "/assets/img/mouse.png"
+    imagen: `${base}assets/img/mouse.png`
   },
   {
     codigo: "MP001",
@@ -69,7 +72,7 @@ export const productos = [
     nombre: "Mousepad Razer Goliathus Extended Chroma",
     precio: 29990,
     precio_texto: "$29.990 CLP",
-    imagen: "/assets/img/mousepadconcaca.png"
+    imagen: `${base}assets/img/mousepadconcaca.png`
   },
   {
     codigo: "PP001",
@@ -77,7 +80,7 @@ export const productos = [
     nombre: "Polera Gamer Personalizada 'Level-Up'",
     precio: 14990,
     precio_texto: "$14.990 CLP",
-    imagen: "/assets/img/polera.png"
+    imagen: `${base}assets/img/polera.png`
   },
   {
     codigo: "PL001",
@@ -85,7 +88,7 @@ export const productos = [
     nombre: "Polerón Gamer con Logo Level-Up",
     precio: 24990,
     precio_texto: "$24.990 CLP",
-    imagen: "/assets/img/ChatGPT_Image_5_sept_2025__11_42_48_p.m.-removebg-preview.png"
+    imagen: `${base}assets/img/ChatGPT_Image_5_sept_2025__11_42_48_p.m.-removebg-preview.png`
   }
 ];
 
@@ -100,4 +103,3 @@ export const categorias = [
   "Poleras Personalizadas",
   "Polerones Personalizados"
 ];
-
