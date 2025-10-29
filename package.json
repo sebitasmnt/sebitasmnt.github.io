@@ -2,6 +2,7 @@
   "name": "level-up-gamer-react",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://sebitasmnt.github.io/sebitasmnt.github.io/",
   "type": "module",
   "scripts": {
     "dev": "vite",
