@@ -1,0 +1,103 @@
+export const productos = [
+  {
+    codigo: "JM001",
+    categoria: "Juegos de Mesa",
+    nombre: "Catan",
+    precio: 29990,
+    precio_texto: "$29.990 CLP",
+    imagen: "/assets/img/8436017220100-1200-face3d-copy3162-removebg-preview.png"
+  },
+  {
+    codigo: "JM002",
+    categoria: "Juegos de Mesa",
+    nombre: "Carcassonne",
+    precio: 24990,
+    precio_texto: "$24.990 CLP",
+    imagen: "/assets/img/carcassonne-removebg-preview.png"
+  },
+  {
+    codigo: "AC001",
+    categoria: "Accesorios",
+    nombre: "Controlador Inalámbrico Xbox Series X",
+    precio: 59990,
+    precio_texto: "$59.990 CLP",
+    imagen: "/assets/img/D_970114-MLA45317791910_032021-O_500x-removebg-preview.png"
+  },
+  {
+    codigo: "AC002",
+    categoria: "Accesorios",
+    nombre: "Auriculares Gamer HyperX Cloud II",
+    precio: 79990,
+    precio_texto: "$79.990 CLP",
+    imagen: "/assets/img/cloud-ii-1_2-removebg-preview.png"
+  },
+  {
+    codigo: "CO001",
+    categoria: "Consolas",
+    nombre: "PlayStation 5",
+    precio: 549990,
+    precio_texto: "$549.990 CLP",
+    imagen: "/assets/img/ps5.png"
+  },
+  {
+    codigo: "CG001",
+    categoria: "Computadores Gamers",
+    nombre: "PC Gamer ASUS ROG Strix",
+    precio: 1299990,
+    precio_texto: "$1.299.990 CLP",
+    imagen: "/assets/img/52-removebg-preview.png"
+  },
+  {
+    codigo: "SG001",
+    categoria: "Sillas Gamers",
+    nombre: "Silla Gamer Secretlab Titan",
+    precio: 349990,
+    precio_texto: "$349.990 CLP",
+    imagen: "/assets/img/minecra-removebg-preview.png"
+  },
+  {
+    codigo: "MS001",
+    categoria: "Mouse",
+    nombre: "Mouse Gamer Logitech G502 HERO",
+    precio: 49990,
+    precio_texto: "$49.990 CLP",
+    imagen: "/assets/img/mouse.png"
+  },
+  {
+    codigo: "MP001",
+    categoria: "Mousepad",
+    nombre: "Mousepad Razer Goliathus Extended Chroma",
+    precio: 29990,
+    precio_texto: "$29.990 CLP",
+    imagen: "/assets/img/mousepadconcaca.png"
+  },
+  {
+    codigo: "PP001",
+    categoria: "Poleras Personalizadas",
+    nombre: "Polera Gamer Personalizada 'Level-Up'",
+    precio: 14990,
+    precio_texto: "$14.990 CLP",
+    imagen: "/assets/img/polera.png"
+  },
+  {
+    codigo: "PL001",
+    categoria: "Polerones Personalizados",
+    nombre: "Polerón Gamer con Logo Level-Up",
+    precio: 24990,
+    precio_texto: "$24.990 CLP",
+    imagen: "/assets/img/ChatGPT_Image_5_sept_2025__11_42_48_p.m.-removebg-preview.png"
+  }
+];
+
+export const categorias = [
+  "Juegos de Mesa",
+  "Accesorios", 
+  "Consolas",
+  "Computadores Gamers",
+  "Sillas Gamers",
+  "Mouse",
+  "Mousepad",
+  "Poleras Personalizadas",
+  "Polerones Personalizados"
+];
+
