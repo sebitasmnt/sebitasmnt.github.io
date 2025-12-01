@@ -1,125 +1,163 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react'
+import { createContext, useContext, useReducer, useEffect } from 'react';
+import { cartService } from '../services/cartService';
+import { useAuth } from './AuthContext';
 
-const CartContext = createContext()
+const CartContext = createContext();
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_TO_CART':
-      const existingItem = state.items.find(item => item.codigo === action.payload.codigo)
-      if (existingItem) {
-        return {
-          ...state,
-          items: state.items.map(item =>
-            item.codigo === action.payload.codigo
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
-          )
-        }
-      }
-      return {
-        ...state,
-        items: [...state.items, { ...action.payload, quantity: 1 }]
-      }
-    
-    case 'REMOVE_FROM_CART':
-      return {
-        ...state,
-        items: state.items.filter(item => item.codigo !== action.payload)
-      }
-    
-    case 'UPDATE_QUANTITY':
-      return {
-        ...state,
-        items: state.items.map(item =>
-          item.codigo === action.payload.codigo
-            ? { ...item, quantity: action.payload.quantity }
-            : item
-        )
-      }
-    
-    case 'CLEAR_CART':
-      return {
-        ...state,
-        items: []
-      }
-    
     case 'LOAD_CART':
       return {
         ...state,
-        items: action.payload || []
-      }
-    
+        ...action.payload,
+        isLoading: false
+      };
+    case 'CLEAR_CART':
+      return {
+        items: [],
+        subtotal: 0,
+        descuentoMonto: 0,
+        total: 0,
+        isLoading: false
+      };
+    case 'SET_LOADING':
+      return {
+        ...state,
+        isLoading: action.payload
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 export const CartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(cartReducer, { items: [] })
+  const [state, dispatch] = useReducer(cartReducer, {
+    items: [],
+    subtotal: 0,
+    descuentoMonto: 0,
+    total: 0,
+    isLoading: false
+  });
 
-  // Cargar carrito del localStorage al inicializar
+  const { isAuthenticated } = useAuth();
+
   useEffect(() => {
-    const savedCart = localStorage.getItem('carrito')
-    if (savedCart) {
-      dispatch({ type: 'LOAD_CART', payload: JSON.parse(savedCart) })
-    }
-  }, [])
-
-  // Guardar carrito en localStorage cuando cambie
-  useEffect(() => {
-    localStorage.setItem('carrito', JSON.stringify(state.items))
-  }, [state.items])
-
-  const addToCart = (producto) => {
-    dispatch({ type: 'ADD_TO_CART', payload: producto })
-  }
-
-  const removeFromCart = (codigo) => {
-    dispatch({ type: 'REMOVE_FROM_CART', payload: codigo })
-  }
-
-  const updateQuantity = (codigo, quantity) => {
-    if (quantity <= 0) {
-      removeFromCart(codigo)
+    if (isAuthenticated) {
+      loadCart();
     } else {
-      dispatch({ type: 'UPDATE_QUANTITY', payload: { codigo, quantity } })
+      dispatch({ type: 'CLEAR_CART' });
     }
-  }
+  }, [isAuthenticated]);
 
-  const clearCart = () => {
-    dispatch({ type: 'CLEAR_CART' })
-  }
+  const loadCart = async () => {
+    try {
+      dispatch({ type: 'SET_LOADING', payload: true });
+      const data = await cartService.get();
+      console.log('📦 Carrito cargado desde backend:', data);
+      console.log('📦 Items en carrito:', data.items);
+
+      // Asegurar que items siempre sea un array
+      if (!data.items) {
+        console.warn('⚠️ Backend no devolvió items, usando array vacío');
+        data.items = [];
+      }
+
+      dispatch({ type: 'LOAD_CART', payload: data });
+    } catch (error) {
+      console.error('Error loading cart:', error);
+      dispatch({ type: 'SET_LOADING', payload: false });
+    }
+  };
+
+  const addToCart = async (producto, cantidad = 1) => {
+    try {
+      await cartService.agregar(producto.id, cantidad);
+      await loadCart();
+      return { success: true };
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      return {
+        success: false,
+        message: error.response?.data?.mensaje || 'Error al agregar al carrito'
+      };
+    }
+  };
+
+  const updateQuantity = async (itemId, cantidad) => {
+    try {
+      await cartService.actualizarCantidad(itemId, cantidad);
+      await loadCart();
+      return { success: true };
+    } catch (error) {
+      console.error('Error updating quantity:', error);
+      return {
+        success: false,
+        message: error.response?.data?.mensaje || 'Error al actualizar cantidad'
+      };
+    }
+  };
+
+  const removeFromCart = async (itemId) => {
+    try {
+      await cartService.eliminarItem(itemId);
+      await loadCart();
+      return { success: true };
+    } catch (error) {
+      console.error('Error removing item:', error);
+      return {
+        success: false,
+        message: error.response?.data?.mensaje || 'Error al eliminar item'
+      };
+    }
+  };
+
+  const clearCart = async () => {
+    try {
+      await cartService.vaciar();
+      dispatch({ type: 'CLEAR_CART' });
+      return { success: true };
+    } catch (error) {
+      console.error('Error clearing cart:', error);
+      return {
+        success: false,
+        message: error.response?.data?.mensaje || 'Error al vaciar carrito'
+      };
+    }
+  };
 
   const getTotalItems = () => {
-    return state.items.reduce((total, item) => total + item.quantity, 0)
-  }
-
-  const getTotalPrice = () => {
-    return state.items.reduce((total, item) => total + (item.precio * item.quantity), 0)
-  }
-
-  const value = {
-    items: state.items,
-    addToCart,
-    removeFromCart,
-    updateQuantity,
-    clearCart,
-    getTotalItems,
-    getTotalPrice
-  }
+    const total = state.items.reduce((sum, item) => sum + item.cantidad, 0);
+    console.log('🛒 Total items en carrito:', total, 'Items:', state.items);
+    return total;
+  };
 
   return (
-    <CartContext.Provider value={value}>
+    <CartContext.Provider
+      value={{
+        items: state.items,
+        subtotal: state.subtotal,
+        descuentoMonto: state.descuentoMonto,
+        total: state.total,
+        isLoading: state.isLoading,
+        addToCart,
+        updateQuantity,
+        removeFromCart,
+        clearCart,
+        getTotalItems,
+        refreshCart: loadCart
+      }}
+    >
       {children}
     </CartContext.Provider>
-  )
-}
+  );
+};
 
 export const useCart = () => {
-  const context = useContext(CartContext)
+  const context = useContext(CartContext);
   if (!context) {
-    throw new Error('useCart must be used within a CartProvider')
+    throw new Error('useCart must be used within CartProvider');
   }
-  return context
-}
+  return context;
+};
+
 

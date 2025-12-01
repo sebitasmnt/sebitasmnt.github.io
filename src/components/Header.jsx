@@ -31,15 +31,15 @@ const Header = () => {
           </li>
           {isAuthenticated ? (
             <>
-              {user?.role === 'admin' && (
+              {user?.rol === 'admin' && (
                 <li><Link to="/admin">Admin</Link></li>
               )}
               <li><Link to="/perfil">Perfil</Link></li>
               <li>
-                <button onClick={handleLogout} style={{ 
-                  background: 'none', 
-                  border: 'none', 
-                  color: '#39FF14', 
+                <button onClick={handleLogout} style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#39FF14',
                   cursor: 'pointer',
                   fontSize: 'inherit',
                   fontFamily: 'inherit'

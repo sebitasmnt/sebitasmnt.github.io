@@ -18,6 +18,7 @@ import AdminNewProduct from './pages/AdminNewProduct'
 import AdminUsers from './pages/AdminUsers'
 import { CartProvider } from './context/CartContext'
 import { AuthProvider } from './context/AuthContext'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -36,17 +37,33 @@ function App() {
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/producto/:codigo" element={<DetalleProducto />} />
-                
+
                 {/* Rutas de autenticación */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/registro" element={<Registro />} />
                 <Route path="/perfil" element={<Perfil />} />
-                
-                {/* Rutas de administración */}
-                <Route path="/admin" element={<AdminDashboard />} />
-                <Route path="/admin/new-user" element={<AdminNewUser />} />
-                <Route path="/admin/new-product" element={<AdminNewProduct />} />
-                <Route path="/admin/users" element={<AdminUsers />} />
+
+                {/* Rutas de administración - Protegidas */}
+                <Route path="/admin" element={
+                  <ProtectedRoute adminOnly={true}>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                } />
+                <Route path="/admin/new-user" element={
+                  <ProtectedRoute adminOnly={true}>
+                    <AdminNewUser />
+                  </ProtectedRoute>
+                } />
+                <Route path="/admin/new-product" element={
+                  <ProtectedRoute adminOnly={true}>
+                    <AdminNewProduct />
+                  </ProtectedRoute>
+                } />
+                <Route path="/admin/users" element={
+                  <ProtectedRoute adminOnly={true}>
+                    <AdminUsers />
+                  </ProtectedRoute>
+                } />
               </Routes>
             </main>
             <Footer />
@@ -58,4 +75,3 @@ function App() {
 }
 
 export default App
-

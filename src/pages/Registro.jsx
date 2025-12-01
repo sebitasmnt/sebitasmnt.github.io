@@ -34,9 +34,9 @@ const Registro = () => {
     setMessage('')
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     // Validar contraseñas
     if (formData.password !== formData.confirmarPassword) {
       setMessage('Las contraseñas no coinciden')
@@ -44,10 +44,10 @@ const Registro = () => {
       return
     }
 
-    const result = register(formData)
-    
+    const result = await register(formData)
+
     if (result.success) {
-      setMessage(result.message)
+      setMessage('Cuenta creada exitosamente. Redirigiendo...')
       setMessageType('success')
       // Redirigir después de un breve delay
       setTimeout(() => {
@@ -64,11 +64,11 @@ const Registro = () => {
       <div className="card">
         <h1 className="title">Crear cuenta</h1>
         <p className="muted">Regístrate para guardar tus pedidos y recibir ofertas.</p>
-        
+
         {message && (
-          <div 
-            className="message" 
-            style={{ 
+          <div
+            className="message"
+            style={{
               color: messageType === 'error' ? '#c0392b' : '#27ae60',
               marginBottom: '1em',
               padding: '10px',
@@ -80,49 +80,49 @@ const Registro = () => {
             {message}
           </div>
         )}
-        
+
         <form className="form-grid" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="nombre">Nombre</label>
-            <input 
-              className="input" 
-              id="nombre" 
+            <input
+              className="input"
+              id="nombre"
               name="nombre"
               value={formData.nombre}
               onChange={handleChange}
-              required 
+              required
             />
           </div>
           <div>
             <label htmlFor="apellido">Apellido</label>
-            <input 
-              className="input" 
-              id="apellido" 
+            <input
+              className="input"
+              id="apellido"
               name="apellido"
               value={formData.apellido}
               onChange={handleChange}
-              required 
+              required
             />
           </div>
           <div>
             <label htmlFor="email">Email</label>
-            <input 
-              className="input" 
-              type="email" 
-              id="email" 
+            <input
+              className="input"
+              type="email"
+              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required 
+              required
             />
           </div>
           <div>
             <label htmlFor="telefono">Teléfono</label>
-            <input 
-              className="input" 
-              type="tel" 
-              placeholder="+56 9 ..." 
-              id="telefono" 
+            <input
+              className="input"
+              type="tel"
+              placeholder="+56 9 ..."
+              id="telefono"
               name="telefono"
               value={formData.telefono}
               onChange={handleChange}
@@ -130,22 +130,22 @@ const Registro = () => {
           </div>
           <div>
             <label htmlFor="edad">Edad</label>
-            <input 
-              className="input" 
-              type="number" 
-              min="0" 
-              id="edad" 
+            <input
+              className="input"
+              type="number"
+              min="0"
+              id="edad"
               name="edad"
               value={formData.edad}
               onChange={handleChange}
-              required 
+              required
             />
           </div>
           <div>
             <label htmlFor="direccion">Dirección</label>
-            <input 
-              className="input" 
-              id="direccion" 
+            <input
+              className="input"
+              id="direccion"
               name="direccion"
               value={formData.direccion}
               onChange={handleChange}
@@ -153,9 +153,9 @@ const Registro = () => {
           </div>
           <div>
             <label htmlFor="comuna">Comuna</label>
-            <input 
-              className="input" 
-              id="comuna" 
+            <input
+              className="input"
+              id="comuna"
               name="comuna"
               value={formData.comuna}
               onChange={handleChange}
@@ -163,9 +163,9 @@ const Registro = () => {
           </div>
           <div>
             <label htmlFor="region">Región</label>
-            <select 
-              className="input" 
-              id="region" 
+            <select
+              className="input"
+              id="region"
               name="region"
               value={formData.region}
               onChange={handleChange}
@@ -175,11 +175,11 @@ const Registro = () => {
           </div>
           <div>
             <label htmlFor="password">Contraseña</label>
-            <input 
-              className="input" 
-              type="password" 
-              required 
-              id="password" 
+            <input
+              className="input"
+              type="password"
+              required
+              id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
@@ -187,11 +187,11 @@ const Registro = () => {
           </div>
           <div>
             <label htmlFor="confirmarPassword">Confirmar</label>
-            <input 
-              className="input" 
-              type="password" 
-              required 
-              id="confirmarPassword" 
+            <input
+              className="input"
+              type="password"
+              required
+              id="confirmarPassword"
               name="confirmarPassword"
               value={formData.confirmarPassword}
               onChange={handleChange}

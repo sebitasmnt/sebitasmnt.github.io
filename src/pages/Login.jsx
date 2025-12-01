@@ -9,6 +9,7 @@ const Login = () => {
     password: ''
   })
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
   const { login, isAuthenticated } = useAuth()
   const navigate = useNavigate()
 
@@ -26,13 +27,20 @@ const Login = () => {
     setError('')
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    
-    const result = login(formData.email, formData.password)
-    
+    setLoading(true)
+
+    const result = await login(formData.email, formData.password)
+
+    setLoading(false)
     if (result.success) {
-      navigate('/')
+      // Redirigir a admin si es administrador, sino al home
+      if (result.user?.rol === 'admin') {
+        navigate('/admin')
+      } else {
+        navigate('/')
+      }
     } else {
       setError(result.message)
     }
@@ -43,10 +51,10 @@ const Login = () => {
       <div className="card">
         <h1 className="title">Iniciar Sesión</h1>
         <p className="muted">Ingresa tus credenciales para continuar.</p>
-        
+
         {error && (
-          <div className="error-message" style={{ 
-            color: '#c0392b', 
+          <div className="error-message" style={{
+            color: '#c0392b',
             marginBottom: '1em',
             padding: '10px',
             backgroundColor: 'rgba(192, 57, 43, 0.1)',
@@ -56,35 +64,39 @@ const Login = () => {
             {error}
           </div>
         )}
-        
+
         <form className="form-grid" onSubmit={handleSubmit}>
           <div className="col-2">
             <label htmlFor="email">Email</label>
             <input
-              className="input" 
-              type="email" 
+              className="input"
+              type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required 
+              disabled={loading}
+              required
             />
           </div>
           <div className="col-2">
             <label htmlFor="password">Contraseña</label>
-            <input 
-              className="input" 
-              type="password" 
+            <input
+              className="input"
+              type="password"
               id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
-              required 
+              disabled={loading}
+              required
             />
           </div>
           <div className="col-2 actions">
             <Link className="btn btn--ghost" to="/registro">¿No tienes cuenta?</Link>
-            <button className="btn btn--primary" type="submit">Entrar</button>
+            <button className="btn btn--primary" type="submit" disabled={loading}>
+              {loading ? 'Cargando...' : 'Entrar'}
+            </button>
           </div>
         </form>
       </div>
