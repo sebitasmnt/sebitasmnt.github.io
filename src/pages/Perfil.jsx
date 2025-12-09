@@ -63,12 +63,12 @@ const Perfil = () => {
 
   const handlePasswordSubmit = (e) => {
     e.preventDefault()
-    
+
     if (passwordData.newPassword !== passwordData.confirmPassword) {
       showMessage('Las contraseñas no coinciden', 'error')
       return
     }
-    
+
     const result = changePassword(user.id, passwordData.currentPassword, passwordData.newPassword)
     if (result.success) {
       showMessage('Contraseña cambiada exitosamente', 'success')
@@ -105,8 +105,8 @@ const Perfil = () => {
         <div className="card profile-card">
           <div className="profile-header">
             <div className="profile-avatar">
-              <img 
-                src="https://via.placeholder.com/150/1E90FF/FFFFFF?text=U" 
+              <img
+                src="https://via.placeholder.com/150/1E90FF/FFFFFF?text=U"
                 alt="Avatar del usuario"
                 id="profileAvatar"
               />
@@ -119,7 +119,7 @@ const Perfil = () => {
               </p>
             </div>
           </div>
-          
+
           <div className="profile-stats">
             <div className="stat">
               <i className="fa-solid fa-shopping-bag"></i>
@@ -141,21 +141,21 @@ const Perfil = () => {
 
         {/* Pestañas de navegación */}
         <div className="profile-tabs">
-          <button 
+          <button
             className={`tab-button ${activeTab === 'personal' ? 'active' : ''}`}
             onClick={() => setActiveTab('personal')}
           >
             <i className="fa-solid fa-user"></i>
             Información Personal
           </button>
-          <button 
+          <button
             className={`tab-button ${activeTab === 'security' ? 'active' : ''}`}
             onClick={() => setActiveTab('security')}
           >
             <i className="fa-solid fa-lock"></i>
             Seguridad
           </button>
-          <button 
+          <button
             className={`tab-button ${activeTab === 'preferences' ? 'active' : ''}`}
             onClick={() => setActiveTab('preferences')}
           >
@@ -167,9 +167,9 @@ const Perfil = () => {
         {/* Contenido de las pestañas */}
         <div className="tab-content">
           {message && (
-            <div 
+            <div
               className="notification"
-              style={{ 
+              style={{
                 color: messageType === 'error' ? '#c0392b' : '#27ae60',
                 marginBottom: '1em',
                 padding: '10px',
@@ -189,65 +189,65 @@ const Perfil = () => {
               <form className="form-grid" onSubmit={handlePersonalSubmit}>
                 <div className="col-2">
                   <label htmlFor="firstName">Nombre</label>
-                  <input 
-                    className="input" 
-                    type="text" 
-                    id="firstName" 
+                  <input
+                    className="input"
+                    type="text"
+                    id="firstName"
                     name="firstName"
                     value={personalData.firstName}
-                    onChange={(e) => setPersonalData({...personalData, firstName: e.target.value})}
+                    onChange={(e) => setPersonalData({ ...personalData, firstName: e.target.value })}
                   />
                 </div>
-                
+
                 <div className="col-2">
                   <label htmlFor="lastName">Apellido</label>
-                  <input 
-                    className="input" 
-                    type="text" 
-                    id="lastName" 
+                  <input
+                    className="input"
+                    type="text"
+                    id="lastName"
                     name="lastName"
                     value={personalData.lastName}
-                    onChange={(e) => setPersonalData({...personalData, lastName: e.target.value})}
+                    onChange={(e) => setPersonalData({ ...personalData, lastName: e.target.value })}
                   />
                 </div>
-                
+
                 <div className="col-2">
                   <label htmlFor="phone">Teléfono</label>
-                  <input 
-                    className="input" 
-                    type="tel" 
-                    id="phone" 
+                  <input
+                    className="input"
+                    type="tel"
+                    id="phone"
                     name="phone"
                     value={personalData.phone}
-                    onChange={(e) => setPersonalData({...personalData, phone: e.target.value})}
+                    onChange={(e) => setPersonalData({ ...personalData, phone: e.target.value })}
                   />
                 </div>
-                
+
                 <div className="col-2">
                   <label htmlFor="dateOfBirth">Fecha de Nacimiento</label>
-                  <input 
-                    className="input" 
-                    type="date" 
-                    id="dateOfBirth" 
+                  <input
+                    className="input"
+                    type="date"
+                    id="dateOfBirth"
                     name="dateOfBirth"
                     value={personalData.dateOfBirth}
-                    onChange={(e) => setPersonalData({...personalData, dateOfBirth: e.target.value})}
+                    onChange={(e) => setPersonalData({ ...personalData, dateOfBirth: e.target.value })}
                   />
                 </div>
-                
+
                 <div className="col-2">
                   <label htmlFor="address">Dirección</label>
-                  <textarea 
-                    className="input" 
-                    id="address" 
-                    name="address" 
+                  <textarea
+                    className="input"
+                    id="address"
+                    name="address"
                     rows="3"
                     value={personalData.address}
-                    onChange={(e) => setPersonalData({...personalData, address: e.target.value})}
+                    onChange={(e) => setPersonalData({ ...personalData, address: e.target.value })}
                   ></textarea>
                 </div>
-                
-                <div className="col-2 actions">
+
+                <div className="col-2 actions buttons-flex">
                   <button type="button" className="btn btn--ghost" onClick={() => setActiveTab('')}>
                     Cancelar
                   </button>
@@ -264,44 +264,44 @@ const Perfil = () => {
               <form className="form-grid" onSubmit={handlePasswordSubmit}>
                 <div className="col-2">
                   <label htmlFor="currentPassword">Contraseña Actual</label>
-                  <input 
-                    className="input" 
-                    type="password" 
-                    id="currentPassword" 
+                  <input
+                    className="input"
+                    type="password"
+                    id="currentPassword"
                     name="currentPassword"
                     value={passwordData.currentPassword}
-                    onChange={(e) => setPasswordData({...passwordData, currentPassword: e.target.value})}
+                    onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
                     required
                   />
                 </div>
-                
+
                 <div className="col-2">
                   <label htmlFor="newPassword">Nueva Contraseña</label>
-                  <input 
-                    className="input" 
-                    type="password" 
-                    id="newPassword" 
+                  <input
+                    className="input"
+                    type="password"
+                    id="newPassword"
                     name="newPassword"
                     value={passwordData.newPassword}
-                    onChange={(e) => setPasswordData({...passwordData, newPassword: e.target.value})}
+                    onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
                     required
                   />
                 </div>
-                
+
                 <div className="col-2">
                   <label htmlFor="confirmPassword">Confirmar Nueva Contraseña</label>
-                  <input 
-                    className="input" 
-                    type="password" 
-                    id="confirmPassword" 
+                  <input
+                    className="input"
+                    type="password"
+                    id="confirmPassword"
                     name="confirmPassword"
                     value={passwordData.confirmPassword}
-                    onChange={(e) => setPasswordData({...passwordData, confirmPassword: e.target.value})}
+                    onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
                     required
                   />
                 </div>
-                
-                <div className="col-2 actions">
+
+                <div className="col-2 actions buttons-flex">
                   <button type="button" className="btn btn--ghost" onClick={() => setActiveTab('')}>
                     Cancelar
                   </button>
@@ -318,46 +318,46 @@ const Perfil = () => {
               <form className="form-grid" onSubmit={handlePreferencesSubmit}>
                 <div className="col-2">
                   <div className="checkbox-group">
-                    <input 
-                      type="checkbox" 
-                      id="newsletter" 
+                    <input
+                      type="checkbox"
+                      id="newsletter"
                       name="newsletter"
                       checked={preferences.newsletter}
-                      onChange={(e) => setPreferences({...preferences, newsletter: e.target.checked})}
+                      onChange={(e) => setPreferences({ ...preferences, newsletter: e.target.checked })}
                     />
                     <label htmlFor="newsletter">Recibir newsletter con ofertas especiales</label>
                   </div>
                 </div>
-                
+
                 <div className="col-2">
                   <div className="checkbox-group">
-                    <input 
-                      type="checkbox" 
-                      id="notifications" 
+                    <input
+                      type="checkbox"
+                      id="notifications"
                       name="notifications"
                       checked={preferences.notifications}
-                      onChange={(e) => setPreferences({...preferences, notifications: e.target.checked})}
+                      onChange={(e) => setPreferences({ ...preferences, notifications: e.target.checked })}
                     />
                     <label htmlFor="notifications">Recibir notificaciones de pedidos</label>
                   </div>
                 </div>
-                
+
                 <div className="col-2">
                   <label htmlFor="theme">Tema</label>
-                  <select 
-                    className="input" 
-                    id="theme" 
+                  <select
+                    className="input"
+                    id="theme"
                     name="theme"
                     value={preferences.theme}
-                    onChange={(e) => setPreferences({...preferences, theme: e.target.value})}
+                    onChange={(e) => setPreferences({ ...preferences, theme: e.target.value })}
                   >
                     <option value="dark">Oscuro</option>
                     <option value="light">Claro</option>
                     <option value="auto">Automático</option>
                   </select>
                 </div>
-                
-                <div className="col-2 actions">
+
+                <div className="col-2 actions buttons-flex">
                   <button type="button" className="btn btn--ghost" onClick={() => setActiveTab('')}>
                     Cancelar
                   </button>

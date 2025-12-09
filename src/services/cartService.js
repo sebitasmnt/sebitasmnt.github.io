@@ -27,5 +27,10 @@ export const cartService = {
     vaciar: async () => {
         const response = await api.delete('/api/carrito/vaciar');
         return response.data;
+    },
+
+    checkout: async () => {
+        const response = await api.post('/api/pedidos');
+        return response.data;
     }
 };

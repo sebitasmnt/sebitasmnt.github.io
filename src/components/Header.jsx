@@ -36,14 +36,7 @@ const Header = () => {
               )}
               <li><Link to="/perfil">Perfil</Link></li>
               <li>
-                <button onClick={handleLogout} style={{
-                  background: 'none',
-                  border: 'none',
-                  color: '#39FF14',
-                  cursor: 'pointer',
-                  fontSize: 'inherit',
-                  fontFamily: 'inherit'
-                }}>
+                <button onClick={handleLogout} className="btn-logout">
                   <i className="fa-solid fa-sign-out-alt"></i>
                 </button>
               </li>

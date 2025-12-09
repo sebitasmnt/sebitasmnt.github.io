@@ -8,15 +8,7 @@ const AdminLayout = ({ children }) => {
 
   const adminNavItems = [
     { path: '/admin', icon: 'fas fa-tachometer-alt', label: 'Dashboard' },
-    { path: '/admin/orders', icon: 'fas fa-shopping-cart', label: 'Orders' },
-    { path: '/admin/inventory', icon: 'fas fa-boxes', label: 'Inventory' },
-    { path: '/admin/reports', icon: 'fas fa-chart-bar', label: 'Reports' },
-    { path: '/admin/employees', icon: 'fas fa-users', label: 'Employees' },
-    { path: '/admin/customers', icon: 'fas fa-user-friends', label: 'Customers' },
-    { path: '/admin/settings', icon: 'fas fa-cog', label: 'Settings' },
-    { path: '/admin/profile', icon: 'fas fa-user', label: 'Profile' },
-    { path: '/admin/search', icon: 'fas fa-search', label: 'Search' },
-    { path: '/admin/help', icon: 'fas fa-question-circle', label: 'Help' }
+    { path: '/admin/inventory', icon: 'fas fa-boxes', label: 'Inventario' }
   ]
 
   const handleLogout = () => {
@@ -36,8 +28,8 @@ const AdminLayout = ({ children }) => {
           <ul className="admin-nav">
             {adminNavItems.map((item) => (
               <li key={item.path}>
-                <Link 
-                  to={item.path} 
+                <Link
+                  to={item.path}
                   className={location.pathname === item.path ? 'active' : ''}
                 >
                   <i className={item.icon}></i> {item.label}

@@ -119,7 +119,7 @@ const Productos = () => {
           <h2>{categoria}</h2>
           <div className="producto-lista">
             {productosCategoria.map(producto => (
-              <div key={producto.codigo || producto.id} className="juego">
+              <div key={producto.codigo || producto.id} className="producto">
                 <h2>{producto.nombre}</h2>
                 <img id="producto-img" src={producto.imagenUrl || producto.imagen} alt={producto.nombre} />
                 <p className="precio">${parseInt(producto.precio).toLocaleString()} CLP</p>

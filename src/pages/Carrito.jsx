@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 
 const Carrito = () => {
-  const { items, subtotal, descuentoMonto, total, removeFromCart, updateQuantity, isLoading } = useCart()
+  const { items, subtotal, descuentoMonto, total, removeFromCart, updateQuantity, checkout, isLoading } = useCart()
+  const navigate = useNavigate()
 
   const formatPrice = (price) => {
     return `$${parseInt(price).toLocaleString()} CLP`
@@ -14,6 +15,18 @@ const Carrito = () => {
       await removeFromCart(itemId)
     } else {
       await updateQuantity(itemId, newQuantity)
+    }
+  }
+
+  const handleCheckout = async () => {
+    if (window.confirm('¿Estás seguro de que quieres confirmar tu compra?')) {
+      const result = await checkout();
+      if (result.success) {
+        alert('¡Compra realizada con éxito! Gracias por tu preferencia.');
+        navigate('/');
+      } else {
+        alert('Hubo un error al procesar tu compra: ' + result.message);
+      }
     }
   }
 
@@ -29,17 +42,22 @@ const Carrito = () => {
 
   return (
     <main className="main">
-      <div className="card">
-        <h1 className="title">Tu carrito</h1>
-        <div id="productos-carrito" className="productos-carrito">
+      <h1 className="title">Tu carrito</h1>
+      <div className="carrito-container">
+        <div className="productos-carrito">
           {items.length === 0 ? (
-            <p>Tu carrito está vacío</p>
+            <div className="card">
+              <p>Tu carrito está vacío</p>
+              <Link className="btn btn--ghost mt-3" to="/productos">Ir a comprar</Link>
+            </div>
           ) : (
             items.map((item) => (
               <div key={item.id} className="producto">
-                <h3>{item.producto?.nombre || 'Producto'}</h3>
-                <p className="muted">Precio: {formatPrice(item.precioUnitario || item.producto?.precio || 0)}</p>
                 <img src={item.producto?.imagenUrl || item.producto?.imagen || ''} alt={item.producto?.nombre || 'Producto'} />
+                <div className="producto-info">
+                  <h3>{item.producto?.nombre || 'Producto'}</h3>
+                  <p className="muted">Precio: {formatPrice(item.precioUnitario || item.producto?.precio || 0)}</p>
+                </div>
                 <div className="quantity-controls">
                   <button
                     onClick={() => handleUpdateQuantity(item.id, item.cantidad - 1)}
@@ -59,26 +77,38 @@ const Carrito = () => {
                   className="eliminar-btn"
                   onClick={() => removeFromCart(item.id)}
                 >
-                  Eliminar
+                  <i className="fa-solid fa-trash"></i>
                 </button>
               </div>
             ))
           )}
         </div>
+
         {items.length > 0 && (
-          <>
+          <div className="carrito-summary">
+            <h2>Resumen de Compra</h2>
             {descuentoMonto > 0 && (
               <>
-                <h3>Subtotal: <span>{formatPrice(subtotal)}</span></h3>
-                <h3>Descuento: <span style={{ color: '#39FF14' }}>-{formatPrice(descuentoMonto)}</span></h3>
+                <div className="d-flex justify-content-between mb-3">
+                  <span>Subtotal:</span>
+                  <span>{formatPrice(subtotal)}</span>
+                </div>
+                <div className="d-flex justify-content-between mb-3" style={{ color: '#39FF14' }}>
+                  <span>Descuento:</span>
+                  <span>-{formatPrice(descuentoMonto)}</span>
+                </div>
               </>
             )}
-            <h2>Total: <span id="totalCarrito">{formatPrice(total)}</span></h2>
-            <div className="actions mt-3">
-              <Link className="btn btn--ghost" to="/productos">Seguir comprando</Link>
-              <button className="btn btn--primary">Proceder al pago</button>
+            <div className="d-flex justify-content-between mb-3" style={{ fontSize: '1.5em', fontWeight: 'bold', color: 'var(--neon-cyan)' }}>
+              <span>Total:</span>
+              <span id="totalCarrito">{formatPrice(total)}</span>
             </div>
-          </>
+
+            <div className="actions mt-3" style={{ flexDirection: 'column' }}>
+              <button onClick={handleCheckout} className="btn btn--primary" style={{ width: '100%' }}>Proceder al pago</button>
+              <Link className="btn btn--ghost" to="/productos" style={{ width: '100%', textAlign: 'center' }}>Seguir comprando</Link>
+            </div>
+          </div>
         )}
       </div>
     </main>

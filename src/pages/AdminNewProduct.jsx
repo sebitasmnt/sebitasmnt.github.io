@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import AdminLayout from '../components/AdminLayout'
 import api from '../services/api'
+import { productService } from '../services/productService'
 
 const AdminNewProduct = () => {
   const navigate = useNavigate()
+  const { id } = useParams()
+  const isEditing = !!id
+
   const [formData, setFormData] = useState({
     codigo: '',
     nombre: '',
@@ -20,27 +24,45 @@ const AdminNewProduct = () => {
 
   const [categorias, setCategorias] = useState([])
   const [loading, setLoading] = useState(false)
-  const [loadingCategorias, setLoadingCategorias] = useState(true)
+  const [loadingData, setLoadingData] = useState(true)
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState('')
 
-  // Cargar categorías del backend
   useEffect(() => {
-    const fetchCategorias = async () => {
+    const loadData = async () => {
       try {
-        const response = await api.get('/api/categorias')
-        setCategorias(response.data)
+        setLoadingData(true)
+        // Cargar categorías
+        const categoriasResponse = await api.get('/api/categorias')
+        setCategorias(categoriasResponse.data)
+
+        // Si es edición, cargar datos del producto
+        if (isEditing) {
+          const productData = await productService.getById(id)
+          setFormData({
+            codigo: productData.codigo,
+            nombre: productData.nombre,
+            descripcion: productData.descripcion || '',
+            precio: productData.precio,
+            stock: productData.stock,
+            stockMinimo: productData.stockMinimo || '10',
+            categoriaId: productData.categoria?.id || productData.categoria,
+            imagenUrl: productData.imagenUrl || productData.imagen || '',
+            destacado: productData.destacado || false,
+            activo: productData.activo !== undefined ? productData.activo : true
+          })
+        }
       } catch (error) {
-        console.error('Error loading categories:', error)
-        setMessage('Error al cargar categorías')
+        console.error('Error loading data:', error)
+        setMessage('Error al cargar datos')
         setMessageType('error')
       } finally {
-        setLoadingCategorias(false)
+        setLoadingData(false)
       }
     }
 
-    fetchCategorias()
-  }, [])
+    loadData()
+  }, [id, isEditing])
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -104,22 +126,26 @@ const AdminNewProduct = () => {
         activo: formData.activo
       }
 
-      // Enviar al backend
-      const response = await api.post('/api/productos/crear', productData)
+      if (isEditing) {
+        await productService.update(id, productData)
+        setMessage('✓ Producto actualizado exitosamente')
+      } else {
+        await api.post('/api/productos/crear', productData)
+        setMessage('✓ Producto creado exitosamente')
+      }
 
-      setMessage('✓ Producto creado exitosamente')
       setMessageType('success')
 
-      // Resetear formulario después de 1.5 segundos y redirigir
+      // Redirigir después de 1.5 segundos
       setTimeout(() => {
-        navigate('/admin')
+        navigate('/admin/inventory')
       }, 1500)
 
     } catch (error) {
-      console.error('Error creating product:', error)
+      console.error('Error saving product:', error)
       const errorMessage = error.response?.data?.mensaje ||
         error.response?.data?.message ||
-        'Error al crear el producto'
+        'Error al guardar el producto'
       setMessage(`✗ ${errorMessage}`)
       setMessageType('error')
     } finally {
@@ -130,7 +156,7 @@ const AdminNewProduct = () => {
   const isStockCritical = formData.stock && formData.stockMinimo &&
     parseInt(formData.stock) <= parseInt(formData.stockMinimo)
 
-  if (loadingCategorias) {
+  if (loadingData) {
     return (
       <AdminLayout>
         <div className="form-container">
@@ -144,7 +170,7 @@ const AdminNewProduct = () => {
     <AdminLayout>
       <div className="form-container">
         <div className="form-header">
-          <h2>NUEVO PRODUCTO</h2>
+          <h2>{isEditing ? 'EDITAR PRODUCTO' : 'NUEVO PRODUCTO'}</h2>
         </div>
 
         {message && (
@@ -346,7 +372,7 @@ const AdminNewProduct = () => {
             <button
               type="button"
               className="btn-cancel"
-              onClick={() => navigate('/admin')}
+              onClick={() => navigate('/admin/inventory')}
               disabled={loading}
             >
               CANCELAR
@@ -356,7 +382,7 @@ const AdminNewProduct = () => {
               className="btn-submit"
               disabled={loading}
             >
-              {loading ? 'GUARDANDO...' : 'GUARDAR PRODUCTO'}
+              {loading ? 'GUARDANDO...' : (isEditing ? 'ACTUALIZAR PRODUCTO' : 'GUARDAR PRODUCTO')}
             </button>
           </div>
         </form>

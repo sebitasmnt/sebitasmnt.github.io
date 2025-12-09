@@ -15,6 +15,7 @@ import Perfil from './pages/Perfil'
 import AdminDashboard from './pages/AdminDashboard'
 import AdminNewUser from './pages/AdminNewUser'
 import AdminNewProduct from './pages/AdminNewProduct'
+import AdminInventory from './pages/AdminInventory'
 import AdminUsers from './pages/AdminUsers'
 import { CartProvider } from './context/CartContext'
 import { AuthProvider } from './context/AuthContext'
@@ -54,7 +55,17 @@ function App() {
                     <AdminNewUser />
                   </ProtectedRoute>
                 } />
+                <Route path="/admin/inventory" element={
+                  <ProtectedRoute adminOnly={true}>
+                    <AdminInventory />
+                  </ProtectedRoute>
+                } />
                 <Route path="/admin/new-product" element={
+                  <ProtectedRoute adminOnly={true}>
+                    <AdminNewProduct />
+                  </ProtectedRoute>
+                } />
+                <Route path="/admin/product/edit/:id" element={
                   <ProtectedRoute adminOnly={true}>
                     <AdminNewProduct />
                   </ProtectedRoute>

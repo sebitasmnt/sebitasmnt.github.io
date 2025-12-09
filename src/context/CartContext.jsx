@@ -125,6 +125,23 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const checkout = async () => {
+    try {
+      dispatch({ type: 'SET_LOADING', payload: true });
+      const pedido = await cartService.checkout();
+      dispatch({ type: 'CLEAR_CART' });
+      return { success: true, pedido };
+    } catch (error) {
+      console.error('Error during checkout:', error);
+      return {
+        success: false,
+        message: error.response?.data?.mensaje || 'Error al procesar la compra'
+      };
+    } finally {
+      dispatch({ type: 'SET_LOADING', payload: false });
+    }
+  };
+
   const getTotalItems = () => {
     const total = state.items.reduce((sum, item) => sum + item.cantidad, 0);
     console.log('🛒 Total items en carrito:', total, 'Items:', state.items);
@@ -143,6 +160,7 @@ export const CartProvider = ({ children }) => {
         updateQuantity,
         removeFromCart,
         clearCart,
+        checkout,
         getTotalItems,
         refreshCart: loadCart
       }}
